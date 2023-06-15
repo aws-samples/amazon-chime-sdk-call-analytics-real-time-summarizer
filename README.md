@@ -120,6 +120,7 @@ Once the call has been completed, and the summarization produced, the result wil
 - Docker desktop - https://www.docker.com/products/docker-desktop/
 - AWS account
 - Basic understanding of telephony
+- [Request access to Amazon SageMaker - Foundation models](https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-use.html) (this could take few days) 
 
 ### Deploy
 
