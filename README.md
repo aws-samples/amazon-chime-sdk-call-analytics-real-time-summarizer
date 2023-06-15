@@ -100,7 +100,9 @@ Because we have been capturing the transcription results as they are created, th
 
 ## Testing
 
-To test this demo, navigate to the Cloudfront Distribution webpage and call the included phone number. When the call is answered, a WAV file will be played simulating the responses from a sample agent.
+To test this demo, navigate to the Cloudfront Distribution webpage. Click on 'Start Endpoint' button if 'Endpoint Status' shows 'Endpoint disabled' to enable SageMaker endpoint. Once 'Endpoint Status' shows as 'Connected', you are ready to test. 
+
+Call the included phone number. When the call is answered, a WAV file will be played simulating the responses from a sample agent.
 
 ## Results
 
@@ -124,6 +126,8 @@ To deploy this demo:
 ```
 yarn launch
 ```
+
+Attention: This deployment includes Amazon SageMaker endpoint which you incur additional charges when you start the SageMaker endpoint. We recommend you to stop the Amazon SageMaker endpoint by clicking on the 'Stop Endpoint' button once finished with the experiment to avoid unexpected charges. See [Amazon SageMaker pricing](https://aws.amazon.com/sagemaker/pricing/) for relevant costs.
 
 ### Cleanup
 
