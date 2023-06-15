@@ -100,7 +100,9 @@ Because we have been capturing the transcription results as they are created, th
 
 ## Testing
 
-To test this demo, navigate to the Cloudfront Distribution webpage. Click on 'Start Endpoint' button if 'Endpoint Status' shows 'Endpoint disabled' to enable SageMaker endpoint. Once 'Endpoint Status' shows as 'Connected', you are ready to test. 
+To test this demo, navigate to the Cloudfront Distribution webpage. 
+
+If 'Endpoint Status' shows as 'Endpoint disabled', click on 'Start Endpoint' to enable the SageMaker endpoint (This could take few mins to enable). Once 'Endpoint Status' shows as 'InService', you are ready to test. 
 
 Call the included phone number. When the call is answered, a WAV file will be played simulating the responses from a sample agent.
 
