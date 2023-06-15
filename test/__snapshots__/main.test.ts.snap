@@ -1,0 +1,4541 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1`] = `
+{
+  "Mappings": {
+    "DefaultCrNodeVersionMap": {
+      "af-south-1": {
+        "value": "nodejs16.x",
+      },
+      "ap-east-1": {
+        "value": "nodejs16.x",
+      },
+      "ap-northeast-1": {
+        "value": "nodejs16.x",
+      },
+      "ap-northeast-2": {
+        "value": "nodejs16.x",
+      },
+      "ap-northeast-3": {
+        "value": "nodejs16.x",
+      },
+      "ap-south-1": {
+        "value": "nodejs16.x",
+      },
+      "ap-south-2": {
+        "value": "nodejs16.x",
+      },
+      "ap-southeast-1": {
+        "value": "nodejs16.x",
+      },
+      "ap-southeast-2": {
+        "value": "nodejs16.x",
+      },
+      "ap-southeast-3": {
+        "value": "nodejs16.x",
+      },
+      "ca-central-1": {
+        "value": "nodejs16.x",
+      },
+      "cn-north-1": {
+        "value": "nodejs16.x",
+      },
+      "cn-northwest-1": {
+        "value": "nodejs16.x",
+      },
+      "eu-central-1": {
+        "value": "nodejs16.x",
+      },
+      "eu-central-2": {
+        "value": "nodejs16.x",
+      },
+      "eu-north-1": {
+        "value": "nodejs16.x",
+      },
+      "eu-south-1": {
+        "value": "nodejs16.x",
+      },
+      "eu-south-2": {
+        "value": "nodejs16.x",
+      },
+      "eu-west-1": {
+        "value": "nodejs16.x",
+      },
+      "eu-west-2": {
+        "value": "nodejs16.x",
+      },
+      "eu-west-3": {
+        "value": "nodejs16.x",
+      },
+      "me-central-1": {
+        "value": "nodejs16.x",
+      },
+      "me-south-1": {
+        "value": "nodejs16.x",
+      },
+      "sa-east-1": {
+        "value": "nodejs16.x",
+      },
+      "us-east-1": {
+        "value": "nodejs16.x",
+      },
+      "us-east-2": {
+        "value": "nodejs16.x",
+      },
+      "us-gov-east-1": {
+        "value": "nodejs16.x",
+      },
+      "us-gov-west-1": {
+        "value": "nodejs16.x",
+      },
+      "us-iso-east-1": {
+        "value": "nodejs14.x",
+      },
+      "us-iso-west-1": {
+        "value": "nodejs14.x",
+      },
+      "us-isob-east-1": {
+        "value": "nodejs14.x",
+      },
+      "us-west-1": {
+        "value": "nodejs16.x",
+      },
+      "us-west-2": {
+        "value": "nodejs16.x",
+      },
+    },
+    "ServerResourcesInstanceAmiMapD7B52D69": {
+      "us-east-1": {
+        "ami": {
+          "Ref": "SsmParameterValueawsservicecanonicalubuntuserverjammystablecurrentarm64hvmebsgp2amiidC96584B6F00A464EAD1953AFF4B05118Parameter",
+        },
+      },
+    },
+  },
+  "Outputs": {
+    "DistributionUrl": {
+      "Value": {
+        "Fn::GetAtt": [
+          "DistributionResourcesDistribution80C53434",
+          "DomainName",
+        ],
+      },
+    },
+    "PhoneNumber": {
+      "Value": {
+        "Fn::GetAtt": [
+          "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceDAB55159",
+          "phoneNumber",
+        ],
+      },
+    },
+    "apiGatewayResourcescontrolSageMakerApiEndpointE2509814": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region",
+            },
+            ".",
+            {
+              "Ref": "AWS::URLSuffix",
+            },
+            "/",
+            {
+              "Ref": "apiGatewayResourcescontrolSageMakerApiDeploymentStageprodA10C7908",
+            },
+            "/",
+          ],
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+    "SsmParameterValueawsservicecanonicalubuntuserverjammystablecurrentarm64hvmebsgp2amiidC96584B6F00A464EAD1953AFF4B05118Parameter": {
+      "Default": "/aws/service/canonical/ubuntu/server/jammy/stable/current/arm64/hvm/ebs-gp2/ami-id",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": {
+      "DependsOn": [
+        "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "f9346b940b724b094a16ca051c017799995fa93df6da38a0539bf7c000fee50a.zip",
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+            "Arn",
+          ],
+        },
+        "Runtime": {
+          "Fn::FindInMap": [
+            "DefaultCrNodeVersionMap",
+            {
+              "Ref": "AWS::Region",
+            },
+            "value",
+          ],
+        },
+        "Timeout": 120,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
+      "DependsOn": [
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "9eb41a5505d37607ac419321497a4f8c21cf0ee1f9b4a6b29aa04301aea5c7fd.zip",
+        },
+        "Environment": {
+          "Variables": {
+            "AWS_CA_BUNDLE": "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem",
+          },
+        },
+        "Handler": "index.handler",
+        "Layers": [
+          {
+            "Ref": "ServerResourcesassetBucketDeploymentAwsCliLayer0D02505B",
+          },
+        ],
+        "Role": {
+          "Fn::GetAtt": [
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+            "Arn",
+          ],
+        },
+        "Runtime": "python3.9",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":s3:::",
+                      {
+                        "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+                      },
+                    ],
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":s3:::",
+                      {
+                        "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "ServerResourcesassetBucketF3E99D21",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "ServerResourcesassetBucketF3E99D21",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "Roles": [
+          {
+            "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": {
+      "DependsOn": [
+        "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "350185a1069fa20a23a583e20c77f6844218bd73097902362dc94f1a108f5d89.zip",
+        },
+        "Description": {
+          "Fn::Join": [
+            "",
+            [
+              "Lambda function for auto-deleting objects in ",
+              {
+                "Ref": "ServerResourcesassetBucketF3E99D21",
+              },
+              " S3 bucket.",
+            ],
+          ],
+        },
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": {
+          "Fn::GetAtt": [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs16.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "DatabaseResourcescallTableC5E68922": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "transactionId",
+            "AttributeType": "S",
+          },
+          {
+            "AttributeName": "timestamp",
+            "AttributeType": "N",
+          },
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "KeySchema": [
+          {
+            "AttributeName": "transactionId",
+            "KeyType": "HASH",
+          },
+          {
+            "AttributeName": "timestamp",
+            "KeyType": "RANGE",
+          },
+        ],
+        "SSESpecification": {
+          "SSEEnabled": true,
+        },
+        "TimeToLiveSpecification": {
+          "AttributeName": "TTL",
+          "Enabled": true,
+        },
+      },
+      "Type": "AWS::DynamoDB::Table",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DatabaseResourcesconnectionTable4B78CE15": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "connectionId",
+            "AttributeType": "S",
+          },
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "KeySchema": [
+          {
+            "AttributeName": "connectionId",
+            "KeyType": "HASH",
+          },
+        ],
+        "SSESpecification": {
+          "SSEEnabled": true,
+        },
+        "TimeToLiveSpecification": {
+          "AttributeName": "TTL",
+          "Enabled": true,
+        },
+      },
+      "Type": "AWS::DynamoDB::Table",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DistributionResourcesDistribution80C53434": {
+      "Properties": {
+        "DistributionConfig": {
+          "DefaultCacheBehavior": {
+            "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
+            "Compress": true,
+            "TargetOriginId": "testDistributionResourcesDistributionOrigin1AB07B588",
+            "ViewerProtocolPolicy": "redirect-to-https",
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": [
+            {
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "http-only",
+                "OriginSSLProtocols": [
+                  "TLSv1.2",
+                ],
+              },
+              "DomainName": {
+                "Fn::GetAtt": [
+                  "VPCResourcesApplicationLoadBalancer8B897D2E",
+                  "DNSName",
+                ],
+              },
+              "Id": "testDistributionResourcesDistributionOrigin1AB07B588",
+            },
+          ],
+        },
+      },
+      "Type": "AWS::CloudFront::Distribution",
+    },
+    "EventBridgeLambdaResourceschimeSdkRuleAllowEventRuletestEventBridgeLambdaResourcesstartSummarizationLambdaB7FFFE907C302062": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "EventBridgeLambdaResourcesstartSummarizationLambda4D2E8088",
+            "Arn",
+          ],
+        },
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "EventBridgeLambdaResourceschimeSdkRuleCE4C499F",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "EventBridgeLambdaResourceschimeSdkRuleCE4C499F": {
+      "Properties": {
+        "EventPattern": {
+          "detail-type": [
+            "Media Insights State Change",
+          ],
+          "source": [
+            "aws.chime",
+          ],
+        },
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": [
+                "EventBridgeLambdaResourcesstartSummarizationLambda4D2E8088",
+                "Arn",
+              ],
+            },
+            "Id": "Target0",
+          },
+        ],
+      },
+      "Type": "AWS::Events::Rule",
+    },
+    "EventBridgeLambdaResourcesstartSummarizationLambda4D2E8088": {
+      "DependsOn": [
+        "EventBridgeLambdaResourcesstartSummarizationRoleDefaultPolicy79AB70C8",
+        "EventBridgeLambdaResourcesstartSummarizationRoleF34A944A",
+      ],
+      "Properties": {
+        "Code": {
+          "ImageUri": {
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:d6462c8bde67bab1d6230eccc65a4618916ded9a36aa877f34c0673ca9c52af6",
+          },
+        },
+        "Environment": {
+          "Variables": {
+            "API_GATEWAY_ENDPOINT": {
+              "Fn::Join": [
+                "",
+                [
+                  "https://",
+                  {
+                    "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+                  },
+                  ".execute-api.",
+                  {
+                    "Ref": "AWS::Region",
+                  },
+                  ".amazonaws.com/dev",
+                ],
+              ],
+            },
+            "CONNECTION_TABLE": {
+              "Ref": "DatabaseResourcesconnectionTable4B78CE15",
+            },
+            "ENDPOINT_NAME": "deployed-cohere-gpt-medium",
+            "KINESIS_DATA_STREAM": {
+              "Ref": "KinesisResourceskinesisDataStream0EF13F28",
+            },
+            "LOG_LEVEL": "INFO",
+            "MODEL_NAME": "deployed-cohere-gpt-medium",
+            "MODEL_PACKAGE_ARN": "arn:aws:sagemaker:us-east-1:865070037744:model-package/cohere-gpt-medium-v1-5-15e34931a06235b7bac32dca396a970a",
+            "SAGEMAKER_ROLE": {
+              "Fn::GetAtt": [
+                "LambdaResourcessageMakerRole782EA4E6",
+                "Arn",
+              ],
+            },
+            "TRANSCRIBE_TABLE": {
+              "Ref": "DatabaseResourcescallTableC5E68922",
+            },
+          },
+        },
+        "PackageType": "Image",
+        "Role": {
+          "Fn::GetAtt": [
+            "EventBridgeLambdaResourcesstartSummarizationRoleF34A944A",
+            "Arn",
+          ],
+        },
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "EventBridgeLambdaResourcesstartSummarizationRoleDefaultPolicy79AB70C8": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "DatabaseResourcescallTableC5E68922",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Ref": "AWS::NoValue",
+                },
+              ],
+            },
+            {
+              "Action": [
+                "kinesis:DescribeStreamSummary",
+                "kinesis:GetRecords",
+                "kinesis:GetShardIterator",
+                "kinesis:ListShards",
+                "kinesis:SubscribeToShard",
+                "kinesis:DescribeStream",
+                "kinesis:ListStreams",
+                "kinesis:DescribeStreamConsumer",
+                "kinesis:PutRecord",
+                "kinesis:PutRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "KinesisResourceskinesisDataStream0EF13F28",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "DatabaseResourcesconnectionTable4B78CE15",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Ref": "AWS::NoValue",
+                },
+              ],
+            },
+            {
+              "Action": "execute-api:ManageConnections",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":",
+                    {
+                      "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+                    },
+                    "/dev/*/@connections/*",
+                  ],
+                ],
+              },
+            },
+            {
+              "Action": "execute-api:ManageConnections",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":",
+                    {
+                      "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+                    },
+                    "/*/*/@connections/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "EventBridgeLambdaResourcesstartSummarizationRoleDefaultPolicy79AB70C8",
+        "Roles": [
+          {
+            "Ref": "EventBridgeLambdaResourcesstartSummarizationRoleF34A944A",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "EventBridgeLambdaResourcesstartSummarizationRoleF34A944A": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": "sagemaker:InvokeEndpoint",
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:sagemaker:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":endpoint/deployed-cohere-gpt-medium",
+                      ],
+                    ],
+                  },
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "sagemakerPolicy",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "KinesisResourceskinesisDataStream0EF13F28": {
+      "Properties": {
+        "RetentionPeriodHours": 24,
+        "ShardCount": 1,
+      },
+      "Type": "AWS::Kinesis::Stream",
+    },
+    "LambdaResourcescontrolSageMakerLambda74DE8606": {
+      "DependsOn": [
+        "LambdaResourcescontrolSageMakerLambdaRole38C30052",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "a4f898f48c277a22dde5d400b50f3eb141c1d157cefc9773a8f399e7227cea0f.zip",
+        },
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+            "COHERE_INSTANCE_TYPE": "ml.g5.xlarge",
+            "ENDPOINT_NAME": "deployed-cohere-gpt-medium",
+            "LOG_LEVEL": "INFO",
+            "MODEL_NAME": "deployed-cohere-gpt-medium",
+            "MODEL_PACKAGE_ARN": "arn:aws:sagemaker:us-east-1:865070037744:model-package/cohere-gpt-medium-v1-5-15e34931a06235b7bac32dca396a970a",
+            "SAGEMAKER_ROLE": {
+              "Fn::GetAtt": [
+                "LambdaResourcessageMakerRole782EA4E6",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaResourcescontrolSageMakerLambdaRole38C30052",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 60,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "LambdaResourcescontrolSageMakerLambdaRole38C30052": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSageMakerFullAccess",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LambdaResourcessageMakerCustomResource14F40458": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "CreateOnStart": "false",
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LambdaResourcessageMakerCustomResourceProviderframeworkonEvent0BAE79CE",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::CustomResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "LambdaResourcessageMakerCustomResourceLambda31DBF15F": {
+      "DependsOn": [
+        "LambdaResourcescontrolSageMakerLambdaRole38C30052",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "8e4edb854e546b979984e10c2b59c52ad769248c799a8a8b50cd67f75fa51151.zip",
+        },
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+            "COHERE_INSTANCE_TYPE": "ml.g5.xlarge",
+            "ENDPOINT_NAME": "deployed-cohere-gpt-medium",
+            "LOG_LEVEL": "INFO",
+            "MODEL_NAME": "deployed-cohere-gpt-medium",
+            "MODEL_PACKAGE_ARN": "arn:aws:sagemaker:us-east-1:865070037744:model-package/cohere-gpt-medium-v1-5-15e34931a06235b7bac32dca396a970a",
+            "SAGEMAKER_ROLE": {
+              "Fn::GetAtt": [
+                "LambdaResourcessageMakerRole782EA4E6",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaResourcescontrolSageMakerLambdaRole38C30052",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 60,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "LambdaResourcessageMakerCustomResourceProviderframeworkonEvent0BAE79CE": {
+      "DependsOn": [
+        "LambdaResourcessageMakerCustomResourceRoleDefaultPolicy93AB4EF7",
+        "LambdaResourcessageMakerCustomResourceRoleFE703729",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "8e3d635893ea17fa3158623489cd42c680fad925b38de1ef51cb10d84f6e245e.zip",
+        },
+        "Description": "AWS CDK resource provider framework - onEvent (test/LambdaResources/sageMakerCustomResourceProvider)",
+        "Environment": {
+          "Variables": {
+            "USER_ON_EVENT_FUNCTION_ARN": {
+              "Fn::GetAtt": [
+                "LambdaResourcessageMakerCustomResourceLambda31DBF15F",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "framework.onEvent",
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaResourcessageMakerCustomResourceRoleFE703729",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "LambdaResourcessageMakerCustomResourceProviderframeworkonEventLogRetentionFF1B7EB5": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "LambdaResourcessageMakerCustomResourceProviderframeworkonEvent0BAE79CE",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 7,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "LambdaResourcessageMakerCustomResourceRoleDefaultPolicy93AB4EF7": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "LambdaResourcessageMakerCustomResourceLambda31DBF15F",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "LambdaResourcessageMakerCustomResourceLambda31DBF15F",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "LambdaResourcessageMakerCustomResourceRoleDefaultPolicy93AB4EF7",
+        "Roles": [
+          {
+            "Ref": "LambdaResourcessageMakerCustomResourceRoleFE703729",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "LambdaResourcessageMakerCustomResourceRoleFE703729": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSageMakerFullAccess",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LambdaResourcessageMakerRole782EA4E6": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "sagemaker.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSageMakerFullAccess",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": {
+      "DependsOn": [
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "5fa1330271b8967d9254ba2d4a07144f8acefe8b77e6d6bba38261373a50d5f8.zip",
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+            "Arn",
+          ],
+        },
+        "Runtime": {
+          "Fn::FindInMap": [
+            "DefaultCrNodeVersionMap",
+            {
+              "Ref": "AWS::Region",
+            },
+            "value",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "logs:PutRetentionPolicy",
+                "logs:DeleteRetentionPolicy",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "Roles": [
+          {
+            "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "MediaPipelineResourceskvsRoleEBA0BB3B": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Condition": {
+                "ArnLike": {
+                  "aws:SourceArn": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:chime:*:",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":*",
+                      ],
+                    ],
+                  },
+                },
+                "StringEquals": {
+                  "aws:SourceAccount": {
+                    "Ref": "AWS::AccountId",
+                  },
+                },
+              },
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "mediapipelines.chime.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": [
+                    "transcribe:StartCallAnalyticsStreamTranscription",
+                    "transcribe:StartStreamTranscription",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": [
+                    "kinesisvideo:GetDataEndpoint",
+                    "kinesisvideo:GetMedia",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:kinesisvideo:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":stream/Chime*",
+                      ],
+                    ],
+                  },
+                },
+                {
+                  "Action": [
+                    "kinesisvideo:GetDataEndpoint",
+                    "kinesisvideo:GetMedia",
+                  ],
+                  "Condition": {
+                    "StringLike": {
+                      "aws:ResourceTag/AWSServiceName": "ChimeSDK",
+                    },
+                  },
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:kinesisvideo:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":stream/*",
+                      ],
+                    ],
+                  },
+                },
+                {
+                  "Action": "kms:Decrypt",
+                  "Condition": {
+                    "StringLike": {
+                      "aws:ResourceTag/AWSServiceName": "ChimeSDK",
+                    },
+                  },
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:kms:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":key/*",
+                      ],
+                    ],
+                  },
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "mediaInsightsPolicy",
+          },
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": "kinesis:PutRecord",
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:kinesis:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":stream/",
+                        {
+                          "Ref": "KinesisResourceskinesisDataStream0EF13F28",
+                        },
+                      ],
+                    ],
+                  },
+                },
+                {
+                  "Action": "kms:GenerateDataKey",
+                  "Condition": {
+                    "StringLike": {
+                      "aws:ResourceTag/AWSServiceName": "ChimeSDK",
+                    },
+                  },
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:kms:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":key/*",
+                      ],
+                    ],
+                  },
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "kinesisDataStreamSinkPolicy",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEvent6A897300": {
+      "DependsOn": [
+        "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRoleDefaultPolicyEEDA4BC1",
+        "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRole19DEBB96",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "8e3d635893ea17fa3158623489cd42c680fad925b38de1ef51cb10d84f6e245e.zip",
+        },
+        "Description": "AWS CDK resource provider framework - onEvent (test/MediaPipelineResources/transcribeConfiguration/mediaPipelinesInsightRequest/MediaPipelineResourceProvider)",
+        "Environment": {
+          "Variables": {
+            "USER_ON_EVENT_FUNCTION_ARN": {
+              "Fn::GetAtt": [
+                "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelinesFunction713F26AC",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "framework.onEvent",
+        "Role": {
+          "Fn::GetAtt": [
+            "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRole19DEBB96",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRole19DEBB96": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRoleDefaultPolicyEEDA4BC1": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelinesFunction713F26AC",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelinesFunction713F26AC",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "transcribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRoleDefaultPolicyEEDA4BC1",
+        "Roles": [
+          {
+            "Ref": "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRole19DEBB96",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelinesFunction713F26AC": {
+      "DependsOn": [
+        "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestmediaPipelineCustomResourceRole9F5992AF",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "c2705c11603ff136689854fa54e44a5617cc4e83a5e8ff633583d92edac83c88.zip",
+        },
+        "Description": "src/resources/media-pipelines/media-pipelines.lambda.ts",
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestmediaPipelineCustomResourceRole9F5992AF",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 60,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestmediaPipelineCustomResourceD6E12EC3": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEvent6A897300",
+            "Arn",
+          ],
+        },
+        "properties": {
+          "elements": [
+            {
+              "amazonTranscribeProcessorConfiguration": {
+                "languageCode": "en-US",
+              },
+              "type": "AmazonTranscribeProcessor",
+            },
+            {
+              "kinesisDataStreamSinkConfiguration": {
+                "insightsTarget": {
+                  "Fn::GetAtt": [
+                    "KinesisResourceskinesisDataStream0EF13F28",
+                    "Arn",
+                  ],
+                },
+              },
+              "type": "KinesisDataStreamSink",
+            },
+          ],
+          "mediaInsightsPipelineConfigurationName": "RealTimeSummarizer",
+          "resourceAccessRoleArn": {
+            "Fn::GetAtt": [
+              "MediaPipelineResourceskvsRoleEBA0BB3B",
+              "Arn",
+            ],
+          },
+        },
+        "resourceType": "MediaPipelineInsights",
+        "uid": "testMediaPipelineResourcestranscribeConfigurationC7BFE488",
+      },
+      "Type": "AWS::CloudFormation::CustomResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestmediaPipelineCustomResourceRole9F5992AF": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Description": "Amazon Chime SDK Media Pipeline Resources",
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": [
+                    "chime:*MediaInsightsPipelineConfiguration",
+                    "chime:ListVoiceConnectors",
+                    "chime:tagResource",
+                    "s3:ListBucket",
+                    "kinesis:DescribeStream",
+                    "logs:GetLogDelivery",
+                    "logs:DeleteLogDelivery",
+                    "logs:ListLogDeliveries",
+                    "logs:CreateLogGroup",
+                    "logs:DescribeResourcePolicies",
+                    "logs:PutResourcePolicy",
+                    "logs:DescribeLogGroups",
+                    "logs:CreateLogDelivery",
+                    "lambda:GetPolicy",
+                    "lambda:AddPermission",
+                    "iam:PutRolePolicy",
+                    "iam:CreateServiceLinkedRole",
+                    "iam:PassRole",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": [
+                    "ssm:PutParameter",
+                    "ssm:GetParameter",
+                    "ssm:DeleteParameter",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:ssm:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":parameter/chime/*",
+                      ],
+                    ],
+                  },
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "chimePolicy",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "ServerResourcesEIPAssociationDEB797AD": {
+      "Properties": {
+        "EIP": {
+          "Ref": "VPCResourcesserverEipA9C87125",
+        },
+        "InstanceId": {
+          "Ref": "ServerResourcesInstance6D1E6643d362aeed0f8eaf03",
+        },
+      },
+      "Type": "AWS::EC2::EIPAssociation",
+    },
+    "ServerResourcesInstance6D1E6643d362aeed0f8eaf03": {
+      "CreationPolicy": {
+        "ResourceSignal": {
+          "Count": 1,
+          "Timeout": "PT10M",
+        },
+      },
+      "DependsOn": [
+        "ServerResourcesserverEc2RoleDefaultPolicyE3565BA9",
+        "ServerResourcesserverEc2Role496F1C91",
+      ],
+      "Metadata": {
+        "AWS::CloudFormation::Init": {
+          "config": {
+            "commands": {
+              "000": {
+                "command": "chmod +x /etc/config_asterisk.sh",
+              },
+              "001": {
+                "command": "/etc/config_asterisk.sh",
+              },
+            },
+            "files": {
+              "/etc/asterisk/asterisk.conf": {
+                "content": "[options]
+runuser = asterisk
+rungroup = asterisk",
+                "encoding": "plain",
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+              "/etc/asterisk/extensions.conf": {
+                "content": "; extensions.conf - the Asterisk dial plan
+[general]
+static=yes
+writeprotect=no
+clearglobalvars=no
+
+[from-voiceConnector]
+include => inbound_phone
+
+[from-phone]
+include => outbound_phone
+
+[outbound_phone]
+exten => _+X.,1,NoOP(Outbound Normal)
+same => n,Dial(PJSIP/\\\${EXTEN}@PSTNVoiceConnector,20)
+same => n,Congestion
+
+[inbound_phone]
+exten => _+X.,1,NoOP(Inbound Call)
+same => n,Answer()
+same => n,Wait(1)
+
+same => n,Verbose(Get device status \${DEVICE_STATE(PJSIP/agent)})
+same => n,GotoIf($[\${DEVICE_STATE(PJSIP/PHONE_NUMBER)}=UNAVAILABLE]?playAudio:callPhone)
+
+same => n(callPhone),NoOp(callPhone)
+same => n,Dial(PJSIP/PHONE_NUMBER)
+same => n,Hangup()
+
+same => n(playAudio),NoOp(playAudio)
+same => n,Playback(/var/lib/asterisk/sounds/en/AGENT_Retail40)
+same => n,Hangup()
+",
+                "encoding": "plain",
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+              "/etc/asterisk/http.conf": {
+                "content": "[general]
+enabled=yes
+bindaddr=0.0.0.0
+bindport=8088
+",
+                "encoding": "plain",
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+              "/etc/asterisk/logger.conf": {
+                "content": "[general]
+[logfiles]
+console = verbose,notice,warning,error
+messages = notice,warning,error",
+                "encoding": "plain",
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+              "/etc/asterisk/modules.conf": {
+                "content": "[modules]
+autoload = no
+
+load = app_bridgewait.so
+load = app_dial.so
+load = app_playback.so
+load = app_stack.so
+load = app_verbose.so
+load = app_voicemail.so
+load = app_directory.so
+load = app_confbridge.so
+load = app_queue.so
+load = app_echo.so
+load = app_while.so
+load = app_read.so
+
+; Bridging
+
+load = bridge_builtin_features.so
+load = bridge_builtin_interval_features.so
+load = bridge_holding.so
+load = bridge_native_rtp.so
+load = bridge_simple.so
+load = bridge_softmix.so
+
+; Call Detail Records
+
+load = cdr_custom.so
+
+; Channel Drivers
+
+load = chan_bridge_media.so
+load = chan_pjsip.so
+
+; Codecs
+
+load = codec_gsm.so
+load = codec_resample.so
+load = codec_ulaw.so
+load = codec_g722.so
+
+; Formats
+
+load = format_gsm.so
+load = format_pcm.so
+load = format_wav_gsm.so
+load = format_wav.so
+
+; Functions
+
+load = func_callerid.so
+load = func_cdr.so
+load = func_pjsip_endpoint.so
+load = func_sorcery.so
+load = func_devstate.so
+load = func_strings.so
+load = func_cut.so
+load = func_rand.so
+load = func_shell.so
+load = func_env.so
+
+; Core/PBX
+
+load = pbx_config.so
+
+; Resources
+
+load = res_http_websocket.so
+load = res_crypto.so
+load = res_musiconhold.so
+load = res_pjproject.so
+load = res_pjsip_acl.so
+load = res_pjsip_authenticator_digest.so
+load = res_pjsip_caller_id.so
+load = res_pjsip_dialog_info_body_generator.so
+load = res_pjsip_diversion.so
+load = res_pjsip_dtmf_info.so
+load = res_pjsip_endpoint_identifier_anonymous.so
+load = res_pjsip_endpoint_identifier_ip.so
+load = res_pjsip_endpoint_identifier_user.so
+load = res_pjsip_exten_state.so
+load = res_pjsip_header_funcs.so
+load = res_pjsip_logger.so
+load = res_pjsip_messaging.so
+load = res_pjsip_mwi_body_generator.so
+load = res_pjsip_mwi.so
+load = res_pjsip_nat.so
+load = res_pjsip_notify.so
+load = res_pjsip_one_touch_record_info.so
+load = res_pjsip_outbound_authenticator_digest.so
+load = res_pjsip_outbound_publish.so
+load = res_pjsip_outbound_registration.so
+load = res_pjsip_path.so
+load = res_pjsip_pidf_body_generator.so
+load = res_pjsip_pidf_digium_body_supplement.so
+load = res_pjsip_pidf_eyebeam_body_supplement.so
+load = res_pjsip_publish_asterisk.so
+load = res_pjsip_pubsub.so
+load = res_pjsip_refer.so
+load = res_pjsip_registrar.so
+load = res_pjsip_rfc3326.so
+load = res_pjsip_sdp_rtp.so
+load = res_pjsip_send_to_voicemail.so
+load = res_pjsip_session.so
+load = res_pjsip.so
+load = res_pjsip_t38.so
+load = res_pjsip_transport_websocket.so
+load = res_pjsip_xpidf_body_generator.so
+load = res_rtp_asterisk.so
+load = res_sorcery_astdb.so
+load = res_sorcery_config.so
+load = res_sorcery_memory.so
+load = res_sorcery_realtime.so
+load = res_timing_timerfd.so
+load = res_pjsip_transport_websocket.so
+load = res_http_websocket.so
+load = res_srtp.so
+
+; Do not load res_hep and kin unless you are using HEP monitoring
+; <http://sipcapture.org> in your network.
+
+noload = res_hep.so
+noload = res_hep_pjsip.so
+noload = res_hep_rtcp.so",
+                "encoding": "plain",
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+              "/etc/asterisk/pjsip.conf": {
+                "content": "[udp]
+type=transport
+protocol=udp
+bind=0.0.0.0
+external_media_address=PUBLIC_IP
+external_signaling_address=PUBLIC_IP
+allow_reload=yes
+
+[PSTNVoiceConnector]
+type=endpoint
+context=from-voiceConnector
+transport=udp
+disallow=all
+allow=ulaw
+aors=PSTNVoiceConnector
+direct_media=no
+ice_support=yes
+force_rport=yes
+
+[PSTNVoiceConnector]
+type=identify
+endpoint=PSTNVoiceConnector
+match=VOICE_CONNECTOR.voiceconnector.chime.aws
+
+[PSTNVoiceConnector]
+type=aor
+contact=sip:VOICE_CONNECTOR.voiceconnector.chime.aws
+qualify_frequency=30
+
+[PHONE_NUMBER]
+type=endpoint
+aors=PHONE_NUMBER
+auth=PHONE_NUMBER
+transport=udp
+context=from-phone
+disallow=all
+allow=ulaw
+
+[PHONE_NUMBER]
+type=auth
+auth_type=userpass
+username=PHONE_NUMBER
+password=INSTANCE_ID
+
+[PHONE_NUMBER]
+type=aor
+max_contacts=5
+
+",
+                "encoding": "plain",
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+              "/etc/asterisk/rtp.conf": {
+                "content": "[general]
+
+stunaddr=stun.kinesisvideo.us-east-1.amazonaws.com:443",
+                "encoding": "plain",
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+              "/etc/config.json": {
+                "content": {
+                  "IP": {
+                    "Ref": "VPCResourcesserverEipA9C87125",
+                  },
+                  "PHONE_NUMBER": {
+                    "Fn::GetAtt": [
+                      "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceDAB55159",
+                      "phoneNumber",
+                    ],
+                  },
+                  "REGION": {
+                    "Ref": "AWS::Region",
+                  },
+                  "VOICE_CONNECTOR": {
+                    "Fn::GetAtt": [
+                      "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResource008AEA05",
+                      "voiceConnectorId",
+                    ],
+                  },
+                },
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+              "/etc/config_asterisk.sh": {
+                "content": "#!/bin/bash -xe
+
+PUBLIC_IP=$( jq -r '.IP' /etc/config.json )
+VOICE_CONNECTOR=$( jq -r '.VOICE_CONNECTOR' /etc/config.json )
+PHONE_NUMBER=$( jq -r '.PHONE_NUMBER' /etc/config.json )
+TOKEN=\`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"\`
+INSTANCE_ID=$( curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/instance-id )
+
+sed -i "s/PUBLIC_IP/$PUBLIC_IP/g" /etc/asterisk/pjsip.conf
+sed -i "s/VOICE_CONNECTOR/\${VOICE_CONNECTOR}/g" /etc/asterisk/pjsip.conf
+sed -i "s/PHONE_NUMBER/$PHONE_NUMBER/g" /etc/asterisk/extensions.conf
+sed -i "s/PHONE_NUMBER/$PHONE_NUMBER/g" /etc/asterisk/pjsip.conf
+sed -i "s/INSTANCE_ID/$INSTANCE_ID/g" /etc/asterisk/pjsip.conf 
+
+echo "VOICE_CONNECTOR: \${VOICE_CONNECTOR}"
+echo "PHONE_NUMBER: \${PHONE_NUMBER}"
+echo "INSTANCE_ID: \${INSTANCE_ID}"
+
+
+aws chime put-voice-connector-origination --voice-connector-id \${VOICE_CONNECTOR} --origination '{"Routes": [{"Host": "'\${PUBLIC_IP}'","Port": 5060,"Protocol": "UDP","Priority": 1,"Weight": 1}],"Disabled": false}'
+aws chime put-voice-connector-termination --voice-connector-id \${VOICE_CONNECTOR} --termination '{"CpsLimit": 1, "CallingRegions": ["US"], "CidrAllowedList": ["'\${PUBLIC_IP}'/32"], "Disabled": false}'
+
+
+usermod -aG audio,dialout asterisk
+chown -R asterisk.asterisk /etc/asterisk
+chown -R asterisk.asterisk /var/{lib,log,spool}/asterisk
+
+echo '0 * * * * /sbin/asterisk -rx "core reload"' > /etc/asterisk/crontab.txt 
+crontab /etc/asterisk/crontab.txt
+
+systemctl restart asterisk
+/sbin/asterisk -rx "core reload"
+
+cd /home/ubuntu/site
+yarn && yarn run build
+systemctl enable nginx
+systemctl restart nginx",
+                "encoding": "plain",
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+              "/etc/nginx/sites-available/default": {
+                "content": "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index index.html;
+
+    server_name _;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /healthcheck {
+        access_log off;
+        return 200;
+    }
+
+    location ~* \\.(?:ico|css|js|gif|jpe?g|png)$ {
+        expires max;
+        add_header Cache-Control "public, must-revalidate, proxy-revalidate";
+        try_files $uri =404;
+    }
+}",
+                "encoding": "plain",
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+              "/home/ubuntu/site/.env": {
+                "content": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "WEBSOCKET_URL=wss://",
+                      {
+                        "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+                      },
+                      ".execute-api.",
+                      {
+                        "Ref": "AWS::Region",
+                      },
+                      ".amazonaws.com/dev
+
+API_GATEWAY_URL=https://",
+                      {
+                        "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+                      },
+                      ".execute-api.",
+                      {
+                        "Ref": "AWS::Region",
+                      },
+                      ".",
+                      {
+                        "Ref": "AWS::URLSuffix",
+                      },
+                      "/",
+                      {
+                        "Ref": "apiGatewayResourcescontrolSageMakerApiDeploymentStageprodA10C7908",
+                      },
+                      "/
+
+PHONE_NUMBER=",
+                      {
+                        "Fn::GetAtt": [
+                          "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceDAB55159",
+                          "phoneNumber",
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                "encoding": "plain",
+                "group": "root",
+                "mode": "000644",
+                "owner": "root",
+              },
+            },
+          },
+          "configSets": {
+            "default": [
+              "config",
+            ],
+          },
+        },
+      },
+      "Properties": {
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "IamInstanceProfile": {
+          "Ref": "ServerResourcesInstanceInstanceProfile79B1D0E5",
+        },
+        "ImageId": {
+          "Fn::FindInMap": [
+            "ServerResourcesInstanceAmiMapD7B52D69",
+            {
+              "Ref": "AWS::Region",
+            },
+            "ami",
+          ],
+        },
+        "InstanceType": "t4g.medium",
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "ServerResourcesInstanceInstanceSecurityGroupA1F64579",
+              "GroupId",
+            ],
+          },
+          {
+            "Fn::GetAtt": [
+              "VPCResourcesServerSecurityGroup9210B7F0",
+              "GroupId",
+            ],
+          },
+          {
+            "Fn::GetAtt": [
+              "VPCResourcesALBSecurityGroupBA6016ED",
+              "GroupId",
+            ],
+          },
+          {
+            "Fn::GetAtt": [
+              "VPCResourcesSSHSecurityGroupEABB5EC4",
+              "GroupId",
+            ],
+          },
+        ],
+        "SubnetId": {
+          "Ref": "VPCResourcesVPCServerPublicSubnet1SubnetBD1933BB",
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "test/ServerResources/Instance",
+          },
+        ],
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Join": [
+              "",
+              [
+                "#!/bin/bash
+apt-get update
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do sleep 1 ; done
+apt-get install -y python3-pip unzip jq asterisk nodejs nginx
+while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do sleep 1 ; done
+corepack enable
+mkdir -p /var/lib/asterisk/sounds/en
+mkdir -p /opt/aws/bin
+pip3 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-py3-latest.tar.gz
+ln -s /root/aws-cfn-bootstrap-latest/init/ubuntu/cfn-hup /etc/init.d/cfn-hup
+ln -s /usr/local/bin/cfn-* /opt/aws/bin/
+curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+unzip -q awscliv2.zip
+./aws/install
+echo AWS CLI installed
+aws s3 cp s3://",
+                {
+                  "Ref": "ServerResourcesassetBucketF3E99D21",
+                },
+                "/audio/AGENT_Retail40.wav /var/lib/asterisk/sounds/en/AGENT_Retail40.wav
+echo Audio files copied
+mkdir -p /home/ubuntu/site
+aws s3 cp s3://",
+                {
+                  "Ref": "ServerResourcesassetBucketF3E99D21",
+                },
+                "/site /home/ubuntu/site --recursive
+usermod -a -G www-data ubuntu
+# fingerprint: bf01b60928f6da50
+(
+  set +e
+  /opt/aws/bin/cfn-init -v --region ",
+                {
+                  "Ref": "AWS::Region",
+                },
+                " --stack ",
+                {
+                  "Ref": "AWS::StackName",
+                },
+                " --resource ServerResourcesInstance6D1E6643d362aeed0f8eaf03 --url https://cloudformation.",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ".",
+                {
+                  "Ref": "AWS::URLSuffix",
+                },
+                " --role ",
+                {
+                  "Ref": "ServerResourcesserverEc2Role496F1C91",
+                },
+                " -c default
+  /opt/aws/bin/cfn-signal -e $? --region ",
+                {
+                  "Ref": "AWS::Region",
+                },
+                " --stack ",
+                {
+                  "Ref": "AWS::StackName",
+                },
+                " --resource ServerResourcesInstance6D1E6643d362aeed0f8eaf03 --url https://cloudformation.",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ".",
+                {
+                  "Ref": "AWS::URLSuffix",
+                },
+                " --role ",
+                {
+                  "Ref": "ServerResourcesserverEc2Role496F1C91",
+                },
+                "
+  cat /var/log/cfn-init.log >&2
+)",
+              ],
+            ],
+          },
+        },
+      },
+      "Type": "AWS::EC2::Instance",
+    },
+    "ServerResourcesInstanceInstanceProfile79B1D0E5": {
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "ServerResourcesserverEc2Role496F1C91",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::InstanceProfile",
+    },
+    "ServerResourcesInstanceInstanceSecurityGroupA1F64579": {
+      "Properties": {
+        "GroupDescription": "test/ServerResources/Instance/InstanceSecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "test/ServerResources/Instance",
+          },
+        ],
+        "VpcId": {
+          "Ref": "VPCResourcesVPC89517325",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "ServerResourcesassetBucketAutoDeleteObjectsCustomResource4155873D": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "ServerResourcesassetBucketPolicy3D8DAAC5",
+      ],
+      "Properties": {
+        "BucketName": {
+          "Ref": "ServerResourcesassetBucketF3E99D21",
+        },
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::S3AutoDeleteObjects",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "ServerResourcesassetBucketDeploymentAwsCliLayer0D02505B": {
+      "Properties": {
+        "Content": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "88b83f5f61fe6f85ffcd0a37a09a8f3be90e7c090964b0b62b062eb8a5a1a3a7.zip",
+        },
+        "Description": "/opt/awscli/aws",
+      },
+      "Type": "AWS::Lambda::LayerVersion",
+    },
+    "ServerResourcesassetBucketDeploymentCustomResource513FD954": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "DestinationBucketName": {
+          "Ref": "ServerResourcesassetBucketF3E99D21",
+        },
+        "Prune": true,
+        "RetainOnDelete": false,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+            "Arn",
+          ],
+        },
+        "SourceBucketNames": [
+          {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        ],
+        "SourceObjectKeys": [
+          "bfc7d6ba3521807876b2b302a3fa0061ec4947b488c61c3c6c75e40e4981de2f.zip",
+        ],
+      },
+      "Type": "Custom::CDKBucketDeployment",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "ServerResourcesassetBucketF3E99D21": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "OwnershipControls": {
+          "Rules": [
+            {
+              "ObjectOwnership": "BucketOwnerPreferred",
+            },
+          ],
+        },
+        "Tags": [
+          {
+            "Key": "aws-cdk:auto-delete-objects",
+            "Value": "true",
+          },
+          {
+            "Key": "aws-cdk:cr-owned:7a22f3a0",
+            "Value": "true",
+          },
+        ],
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "ServerResourcesassetBucketPolicy3D8DAAC5": {
+      "Properties": {
+        "Bucket": {
+          "Ref": "ServerResourcesassetBucketF3E99D21",
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                    "Arn",
+                  ],
+                },
+              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "ServerResourcesassetBucketF3E99D21",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "ServerResourcesassetBucketF3E99D21",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+    "ServerResourcesserverEc2Role496F1C91": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ec2.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSSMManagedInstanceCore",
+              ],
+            ],
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": "chime:*",
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "chimePolicy",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "ServerResourcesserverEc2RoleDefaultPolicyE3565BA9": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "ServerResourcesassetBucketF3E99D21",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "ServerResourcesassetBucketF3E99D21",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "cloudformation:DescribeStackResource",
+                "cloudformation:SignalResource",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Ref": "AWS::StackId",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "ServerResourcesserverEc2RoleDefaultPolicyE3565BA9",
+        "Roles": [
+          {
+            "Ref": "ServerResourcesserverEc2Role496F1C91",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "ServerResourcestargetGroup298F374B": {
+      "Properties": {
+        "HealthCheckPath": "/healthcheck",
+        "HealthCheckProtocol": "HTTP",
+        "Port": 80,
+        "Protocol": "HTTP",
+        "TargetGroupAttributes": [
+          {
+            "Key": "stickiness.enabled",
+            "Value": "false",
+          },
+        ],
+        "TargetType": "instance",
+        "Targets": [
+          {
+            "Id": {
+              "Ref": "ServerResourcesInstance6D1E6643d362aeed0f8eaf03",
+            },
+          },
+        ],
+        "VpcId": {
+          "Ref": "VPCResourcesVPC89517325",
+        },
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+    },
+    "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEvent25770E78": {
+      "DependsOn": [
+        "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy75467F00",
+        "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRole592D736E",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "8e3d635893ea17fa3158623489cd42c680fad925b38de1ef51cb10d84f6e245e.zip",
+        },
+        "Description": "AWS CDK resource provider framework - onEvent (test/VCResources/phoneNumber/ChimePhoneNumber/PSTNResourceProvider)",
+        "Environment": {
+          "Variables": {
+            "USER_ON_EVENT_FUNCTION_ARN": {
+              "Fn::GetAtt": [
+                "VCResourcesphoneNumberChimePhoneNumberpstnResourcesFunctionAC3E4525",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "framework.onEvent",
+        "Role": {
+          "Fn::GetAtt": [
+            "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRole592D736E",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRole592D736E": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy75467F00": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "VCResourcesphoneNumberChimePhoneNumberpstnResourcesFunctionAC3E4525",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "VCResourcesphoneNumberChimePhoneNumberpstnResourcesFunctionAC3E4525",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy75467F00",
+        "Roles": [
+          {
+            "Ref": "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRole592D736E",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceDAB55159": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEvent25770E78",
+            "Arn",
+          ],
+        },
+        "properties": {
+          "phoneCountry": "US",
+          "phoneNumberType": "Local",
+          "phoneProductType": "VoiceConnector",
+          "phoneState": "AZ",
+        },
+        "resourceType": "PhoneNumber",
+        "uid": "testVCResourcesphoneNumber5FF8813C",
+      },
+      "Type": "AWS::CloudFormation::CustomResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceRole05044CE5": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Description": "Amazon Chime PSTN Resources",
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": [
+                    "chime:*VoiceProfileDomain*",
+                    "kms:CreateGrant",
+                    "kms:DescribeKey",
+                    "chime:*MediaInsightsPipelineConfiguration*",
+                    "chime:CreateSipRule",
+                    "chime:DeleteSipRule",
+                    "chime:UpdateSipRule",
+                    "chime:GetSipRule",
+                    "chime:CreateSipMediaApplication",
+                    "chime:DeleteSipMediaApplication",
+                    "chime:GetPhoneNumberOrder",
+                    "chime:SearchAvailablePhoneNumbers",
+                    "chime:CreatePhoneNumberOrder",
+                    "chime:DeletePhoneNumber",
+                    "chime:GetPhoneNumber",
+                    "chime:CreateVoiceConnector",
+                    "chime:PutVoiceConnectorStreamingConfiguration",
+                    "chime:PutVoiceConnectorTermination",
+                    "chime:PutVoiceConnectorOrigination",
+                    "chime:PutVoiceConnectorLoggingConfiguration",
+                    "chime:ListPhoneNumbers",
+                    "chime:AssociatePhoneNumbersWithVoiceConnector",
+                    "chime:DisassociatePhoneNumbersFromVoiceConnector",
+                    "chime:DeleteVoiceConnector",
+                    "chime:PutSipMediaApplicationAlexaSkillConfiguration",
+                    "chime:PutSipMediaApplicationLoggingConfiguration",
+                    "logs:GetLogDelivery",
+                    "logs:DeleteLogDelivery",
+                    "logs:ListLogDeliveries",
+                    "logs:CreateLogGroup",
+                    "logs:DescribeResourcePolicies",
+                    "logs:PutResourcePolicy",
+                    "logs:DescribeLogGroups",
+                    "logs:CreateLogDelivery",
+                    "lambda:GetPolicy",
+                    "lambda:AddPermission",
+                    "iam:PutRolePolicy",
+                    "iam:CreateServiceLinkedRole",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": [
+                    "ssm:PutParameter",
+                    "ssm:GetParameter",
+                    "ssm:DeleteParameter",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:ssm:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":parameter/chime/*",
+                      ],
+                    ],
+                  },
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "chimePolicy",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "VCResourcesphoneNumberChimePhoneNumberpstnResourcesFunctionAC3E4525": {
+      "DependsOn": [
+        "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceRole05044CE5",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "18a21c219083043f3d7d56daa068e5c1be7706ffda18f115cae5a7d441a307fc.zip",
+        },
+        "Description": "src/resources/pstn/pstn.lambda.ts",
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceRole05044CE5",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 60,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "VCResourcesphoneNumberphoneAssociation86AD31E9": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "VCResourcesphoneNumberphoneAssociationCustomResourcePolicy5AB33D78",
+      ],
+      "Properties": {
+        "Create": {
+          "Fn::Join": [
+            "",
+            [
+              "{"service":"Chime","action":"associatePhoneNumbersWithVoiceConnector","region":"us-east-1","parameters":{"E164PhoneNumbers":["",
+              {
+                "Fn::GetAtt": [
+                  "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceDAB55159",
+                  "phoneNumber",
+                ],
+              },
+              ""],"VoiceConnectorId":"",
+              {
+                "Fn::GetAtt": [
+                  "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResource008AEA05",
+                  "voiceConnectorId",
+                ],
+              },
+              "","ForceAssociate":true},"physicalResourceId":{"id":"testVCResourcesphoneNumberphoneAssociation935FC5E9"}}",
+            ],
+          ],
+        },
+        "Delete": {
+          "Fn::Join": [
+            "",
+            [
+              "{"service":"Chime","action":"disassociatePhoneNumbersFromVoiceConnector","region":"us-east-1","parameters":{"E164PhoneNumbers":["",
+              {
+                "Fn::GetAtt": [
+                  "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceDAB55159",
+                  "phoneNumber",
+                ],
+              },
+              ""],"VoiceConnectorId":"",
+              {
+                "Fn::GetAtt": [
+                  "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResource008AEA05",
+                  "voiceConnectorId",
+                ],
+              },
+              ""},"physicalResourceId":{"id":"testVCResourcesphoneNumberphoneAssociation935FC5E9"}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": true,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::AWS",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "VCResourcesphoneNumberphoneAssociationCustomResourcePolicy5AB33D78": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "chime:AssociatePhoneNumbersWithVoiceConnector",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": "chime:DisassociatePhoneNumbersFromVoiceConnector",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "VCResourcesphoneNumberphoneAssociationCustomResourcePolicy5AB33D78",
+        "Roles": [
+          {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventDCF379A6": {
+      "DependsOn": [
+        "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy3E381DC7",
+        "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRole71DBE2D0",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "8e3d635893ea17fa3158623489cd42c680fad925b38de1ef51cb10d84f6e245e.zip",
+        },
+        "Description": "AWS CDK resource provider framework - onEvent (test/VCResources/voiceConnector/voiceConnectorRequest/PSTNResourceProvider)",
+        "Environment": {
+          "Variables": {
+            "USER_ON_EVENT_FUNCTION_ARN": {
+              "Fn::GetAtt": [
+                "VCResourcesvoiceConnectorvoiceConnectorRequestpstnResourcesFunction22B91A5E",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "framework.onEvent",
+        "Role": {
+          "Fn::GetAtt": [
+            "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRole71DBE2D0",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRole71DBE2D0": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy3E381DC7": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "VCResourcesvoiceConnectorvoiceConnectorRequestpstnResourcesFunction22B91A5E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "VCResourcesvoiceConnectorvoiceConnectorRequestpstnResourcesFunction22B91A5E",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy3E381DC7",
+        "Roles": [
+          {
+            "Ref": "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRole71DBE2D0",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResource008AEA05": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventDCF379A6",
+            "Arn",
+          ],
+        },
+        "properties": {
+          "encryption": false,
+          "name": "testVCResourcesvoiceConnector7C89A135",
+          "region": {
+            "Ref": "AWS::Region",
+          },
+          "streaming": {
+            "dataRetention": 24,
+            "enabled": true,
+            "mediaInsightsConfiguration": {
+              "configurationArn": {
+                "Fn::GetAtt": [
+                  "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestmediaPipelineCustomResourceD6E12EC3",
+                  "MediaInsightsPipelineConfigurationArn",
+                ],
+              },
+              "disabled": false,
+            },
+            "notificationTargets": [
+              "EventBridge",
+            ],
+          },
+          "termination": {
+            "callingRegions": [
+              "US",
+            ],
+            "terminationCidrs": [
+              "198.51.100.0/27",
+            ],
+          },
+        },
+        "resourceType": "VoiceConnector",
+        "uid": "testVCResourcesvoiceConnector7C89A135",
+      },
+      "Type": "AWS::CloudFormation::CustomResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResourceRole8D097508": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Description": "Amazon Chime PSTN Resources",
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": [
+                    "chime:*VoiceProfileDomain*",
+                    "kms:CreateGrant",
+                    "kms:DescribeKey",
+                    "chime:*MediaInsightsPipelineConfiguration*",
+                    "chime:CreateSipRule",
+                    "chime:DeleteSipRule",
+                    "chime:UpdateSipRule",
+                    "chime:GetSipRule",
+                    "chime:CreateSipMediaApplication",
+                    "chime:DeleteSipMediaApplication",
+                    "chime:GetPhoneNumberOrder",
+                    "chime:SearchAvailablePhoneNumbers",
+                    "chime:CreatePhoneNumberOrder",
+                    "chime:DeletePhoneNumber",
+                    "chime:GetPhoneNumber",
+                    "chime:CreateVoiceConnector",
+                    "chime:PutVoiceConnectorStreamingConfiguration",
+                    "chime:PutVoiceConnectorTermination",
+                    "chime:PutVoiceConnectorOrigination",
+                    "chime:PutVoiceConnectorLoggingConfiguration",
+                    "chime:ListPhoneNumbers",
+                    "chime:AssociatePhoneNumbersWithVoiceConnector",
+                    "chime:DisassociatePhoneNumbersFromVoiceConnector",
+                    "chime:DeleteVoiceConnector",
+                    "chime:PutSipMediaApplicationAlexaSkillConfiguration",
+                    "chime:PutSipMediaApplicationLoggingConfiguration",
+                    "logs:GetLogDelivery",
+                    "logs:DeleteLogDelivery",
+                    "logs:ListLogDeliveries",
+                    "logs:CreateLogGroup",
+                    "logs:DescribeResourcePolicies",
+                    "logs:PutResourcePolicy",
+                    "logs:DescribeLogGroups",
+                    "logs:CreateLogDelivery",
+                    "lambda:GetPolicy",
+                    "lambda:AddPermission",
+                    "iam:PutRolePolicy",
+                    "iam:CreateServiceLinkedRole",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": [
+                    "ssm:PutParameter",
+                    "ssm:GetParameter",
+                    "ssm:DeleteParameter",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:ssm:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":parameter/chime/*",
+                      ],
+                    ],
+                  },
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "chimePolicy",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "VCResourcesvoiceConnectorvoiceConnectorRequestpstnResourcesFunction22B91A5E": {
+      "DependsOn": [
+        "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResourceRole8D097508",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "18a21c219083043f3d7d56daa068e5c1be7706ffda18f115cae5a7d441a307fc.zip",
+        },
+        "Description": "src/resources/pstn/pstn.lambda.ts",
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResourceRole8D097508",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 60,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "VPCResourcesALBSecurityGroupBA6016ED": {
+      "Properties": {
+        "GroupDescription": "Security Group for ALB",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:80",
+            "FromPort": 80,
+            "IpProtocol": "tcp",
+            "ToPort": 80,
+          },
+        ],
+        "VpcId": {
+          "Ref": "VPCResourcesVPC89517325",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "VPCResourcesApplicationLoadBalancer8B897D2E": {
+      "DependsOn": [
+        "VPCResourcesVPCServerPublicSubnet1DefaultRoute5FFEFA2B",
+        "VPCResourcesVPCServerPublicSubnet1RouteTableAssociation739BF4B9",
+        "VPCResourcesVPCServerPublicSubnet2DefaultRoute3DFFC6FB",
+        "VPCResourcesVPCServerPublicSubnet2RouteTableAssociation98A1D7C3",
+      ],
+      "Properties": {
+        "LoadBalancerAttributes": [
+          {
+            "Key": "deletion_protection.enabled",
+            "Value": "false",
+          },
+        ],
+        "Scheme": "internet-facing",
+        "SecurityGroups": [
+          {
+            "Fn::GetAtt": [
+              "VPCResourcesALBSecurityGroupBA6016ED",
+              "GroupId",
+            ],
+          },
+        ],
+        "Subnets": [
+          {
+            "Ref": "VPCResourcesVPCServerPublicSubnet1SubnetBD1933BB",
+          },
+          {
+            "Ref": "VPCResourcesVPCServerPublicSubnet2Subnet87CFAE90",
+          },
+        ],
+        "Type": "application",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+    },
+    "VPCResourcesApplicationLoadBalancerhttpListener5F903A35": {
+      "Properties": {
+        "DefaultActions": [
+          {
+            "TargetGroupArn": {
+              "Ref": "ServerResourcestargetGroup298F374B",
+            },
+            "Type": "forward",
+          },
+        ],
+        "LoadBalancerArn": {
+          "Ref": "VPCResourcesApplicationLoadBalancer8B897D2E",
+        },
+        "Port": 80,
+        "Protocol": "HTTP",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::Listener",
+    },
+    "VPCResourcesSSHSecurityGroupEABB5EC4": {
+      "Properties": {
+        "GroupDescription": "Security Group for SSH",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:22",
+            "FromPort": 22,
+            "IpProtocol": "tcp",
+            "ToPort": 22,
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:3000",
+            "FromPort": 3000,
+            "IpProtocol": "tcp",
+            "ToPort": 3000,
+          },
+        ],
+        "VpcId": {
+          "Ref": "VPCResourcesVPC89517325",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "VPCResourcesServerSecurityGroup9210B7F0": {
+      "Properties": {
+        "GroupDescription": "Security Group for Asterisk Instance",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "3.80.16.0/23",
+            "Description": "Allow Chime Voice Connector Signaling Access",
+            "FromPort": 5060,
+            "IpProtocol": "udp",
+            "ToPort": 5060,
+          },
+          {
+            "CidrIp": "3.80.16.0/23",
+            "Description": "Allow Chime Voice Connector Signaling Access",
+            "FromPort": 5060,
+            "IpProtocol": "tcp",
+            "ToPort": 5060,
+          },
+          {
+            "CidrIp": "99.77.253.0/24",
+            "Description": "Allow Chime Voice Connector Signaling Access",
+            "FromPort": 5060,
+            "IpProtocol": "udp",
+            "ToPort": 5060,
+          },
+          {
+            "CidrIp": "99.77.253.0/24",
+            "Description": "Allow Chime Voice Connector Signaling Access",
+            "FromPort": 5060,
+            "IpProtocol": "tcp",
+            "ToPort": 5060,
+          },
+          {
+            "CidrIp": "99.77.253.0/24",
+            "Description": "Allow Chime Voice Connector Signaling Access",
+            "FromPort": 5000,
+            "IpProtocol": "udp",
+            "ToPort": 65000,
+          },
+          {
+            "CidrIp": "3.80.16.0/23",
+            "Description": "Allow Chime Voice Connector Media Access",
+            "FromPort": 5000,
+            "IpProtocol": "udp",
+            "ToPort": 65000,
+          },
+          {
+            "CidrIp": "52.55.62.128/25",
+            "Description": "Allow Chime Voice Connector Media Access",
+            "FromPort": 1024,
+            "IpProtocol": "udp",
+            "ToPort": 65535,
+          },
+          {
+            "CidrIp": "52.55.63.0/25",
+            "Description": "Allow Chime Voice Connector Media Access",
+            "FromPort": 1024,
+            "IpProtocol": "udp",
+            "ToPort": 65535,
+          },
+          {
+            "CidrIp": "34.212.95.128/25",
+            "Description": "Allow Chime Voice Connector Media Access",
+            "FromPort": 1024,
+            "IpProtocol": "udp",
+            "ToPort": 65535,
+          },
+          {
+            "CidrIp": "34.223.21.0/25",
+            "Description": "Allow Chime Voice Connector Media Access",
+            "FromPort": 1024,
+            "IpProtocol": "udp",
+            "ToPort": 65535,
+          },
+        ],
+        "VpcId": {
+          "Ref": "VPCResourcesVPC89517325",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "VPCResourcesVPC89517325": {
+      "Properties": {
+        "CidrBlock": "10.0.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "test/VPCResources/VPC",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::VPC",
+    },
+    "VPCResourcesVPCIGW0870CE93": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "test/VPCResources/VPC",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::InternetGateway",
+    },
+    "VPCResourcesVPCServerPublicSubnet1DefaultRoute5FFEFA2B": {
+      "DependsOn": [
+        "VPCResourcesVPCVPCGW8CE4D94B",
+      ],
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "VPCResourcesVPCIGW0870CE93",
+        },
+        "RouteTableId": {
+          "Ref": "VPCResourcesVPCServerPublicSubnet1RouteTableF876F433",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "VPCResourcesVPCServerPublicSubnet1RouteTableAssociation739BF4B9": {
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "VPCResourcesVPCServerPublicSubnet1RouteTableF876F433",
+        },
+        "SubnetId": {
+          "Ref": "VPCResourcesVPCServerPublicSubnet1SubnetBD1933BB",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "VPCResourcesVPCServerPublicSubnet1RouteTableF876F433": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "test/VPCResources/VPC/ServerPublicSubnet1",
+          },
+        ],
+        "VpcId": {
+          "Ref": "VPCResourcesVPC89517325",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "VPCResourcesVPCServerPublicSubnet1SubnetBD1933BB": {
+      "Properties": {
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.0.0/24",
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "ServerPublic",
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          {
+            "Key": "Name",
+            "Value": "test/VPCResources/VPC/ServerPublicSubnet1",
+          },
+        ],
+        "VpcId": {
+          "Ref": "VPCResourcesVPC89517325",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "VPCResourcesVPCServerPublicSubnet2DefaultRoute3DFFC6FB": {
+      "DependsOn": [
+        "VPCResourcesVPCVPCGW8CE4D94B",
+      ],
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "VPCResourcesVPCIGW0870CE93",
+        },
+        "RouteTableId": {
+          "Ref": "VPCResourcesVPCServerPublicSubnet2RouteTable4049D21F",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "VPCResourcesVPCServerPublicSubnet2RouteTable4049D21F": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "test/VPCResources/VPC/ServerPublicSubnet2",
+          },
+        ],
+        "VpcId": {
+          "Ref": "VPCResourcesVPC89517325",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "VPCResourcesVPCServerPublicSubnet2RouteTableAssociation98A1D7C3": {
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "VPCResourcesVPCServerPublicSubnet2RouteTable4049D21F",
+        },
+        "SubnetId": {
+          "Ref": "VPCResourcesVPCServerPublicSubnet2Subnet87CFAE90",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "VPCResourcesVPCServerPublicSubnet2Subnet87CFAE90": {
+      "Properties": {
+        "AvailabilityZone": {
+          "Fn::Select": [
+            1,
+            {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.1.0/24",
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "ServerPublic",
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          {
+            "Key": "Name",
+            "Value": "test/VPCResources/VPC/ServerPublicSubnet2",
+          },
+        ],
+        "VpcId": {
+          "Ref": "VPCResourcesVPC89517325",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "VPCResourcesVPCVPCGW8CE4D94B": {
+      "Properties": {
+        "InternetGatewayId": {
+          "Ref": "VPCResourcesVPCIGW0870CE93",
+        },
+        "VpcId": {
+          "Ref": "VPCResourcesVPC89517325",
+        },
+      },
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+    },
+    "VPCResourcesserverEipA9C87125": {
+      "Type": "AWS::EC2::EIP",
+    },
+    "apiGatewayResourcescontrolSageMakerApi98F79DA1": {
+      "Properties": {
+        "EndpointConfiguration": {
+          "Types": [
+            "REGIONAL",
+          ],
+        },
+        "Name": "controlSageMakerApi",
+      },
+      "Type": "AWS::ApiGateway::RestApi",
+    },
+    "apiGatewayResourcescontrolSageMakerApiAccount4CDD6528": {
+      "DeletionPolicy": "Retain",
+      "DependsOn": [
+        "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+      ],
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "apiGatewayResourcescontrolSageMakerApiCloudWatchRoleBDFE07B1",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::ApiGateway::Account",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "apiGatewayResourcescontrolSageMakerApiCloudWatchRoleBDFE07B1": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "apiGatewayResourcescontrolSageMakerApiDeploymentECFDAA7C4231dfa1b0b706c43add0c1d411ab523": {
+      "DependsOn": [
+        "apiGatewayResourcescontrolSageMakerApiactionOPTIONS88DCF1D5",
+        "apiGatewayResourcescontrolSageMakerApiactionPOST8AEE53B8",
+        "apiGatewayResourcescontrolSageMakerApiaction6763D836",
+        "apiGatewayResourcescontrolSageMakerApiOPTIONS8FD4C926",
+      ],
+      "Properties": {
+        "Description": "Automatically created by the RestApi construct",
+        "RestApiId": {
+          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+        },
+      },
+      "Type": "AWS::ApiGateway::Deployment",
+    },
+    "apiGatewayResourcescontrolSageMakerApiDeploymentStageprodA10C7908": {
+      "DependsOn": [
+        "apiGatewayResourcescontrolSageMakerApiAccount4CDD6528",
+      ],
+      "Properties": {
+        "DeploymentId": {
+          "Ref": "apiGatewayResourcescontrolSageMakerApiDeploymentECFDAA7C4231dfa1b0b706c43add0c1d411ab523",
+        },
+        "MethodSettings": [
+          {
+            "DataTraceEnabled": true,
+            "HttpMethod": "*",
+            "LoggingLevel": "INFO",
+            "ResourcePath": "/*",
+          },
+        ],
+        "RestApiId": {
+          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+        },
+        "StageName": "prod",
+      },
+      "Type": "AWS::ApiGateway::Stage",
+    },
+    "apiGatewayResourcescontrolSageMakerApiOPTIONS8FD4C926": {
+      "Properties": {
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Credentials": "'true'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+              },
+              "StatusCode": "204",
+            },
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }",
+          },
+          "Type": "MOCK",
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Credentials": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+            },
+            "StatusCode": "204",
+          },
+        ],
+        "ResourceId": {
+          "Fn::GetAtt": [
+            "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+            "RootResourceId",
+          ],
+        },
+        "RestApiId": {
+          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "apiGatewayResourcescontrolSageMakerApiaction6763D836": {
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+            "RootResourceId",
+          ],
+        },
+        "PathPart": "action",
+        "RestApiId": {
+          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "apiGatewayResourcescontrolSageMakerApiactionOPTIONS88DCF1D5": {
+      "Properties": {
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Credentials": "'true'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+              },
+              "StatusCode": "204",
+            },
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }",
+          },
+          "Type": "MOCK",
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Credentials": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+            },
+            "StatusCode": "204",
+          },
+        ],
+        "ResourceId": {
+          "Ref": "apiGatewayResourcescontrolSageMakerApiaction6763D836",
+        },
+        "RestApiId": {
+          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "apiGatewayResourcescontrolSageMakerApiactionPOST8AEE53B8": {
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "POST",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "LambdaResourcescontrolSageMakerLambda74DE8606",
+                    "Arn",
+                  ],
+                },
+                "/invocations",
+              ],
+            ],
+          },
+        },
+        "ResourceId": {
+          "Ref": "apiGatewayResourcescontrolSageMakerApiaction6763D836",
+        },
+        "RestApiId": {
+          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "apiGatewayResourcescontrolSageMakerApiactionPOSTApiPermissionTesttestapiGatewayResourcescontrolSageMakerApiBD332A0FPOSTaction225962B5": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LambdaResourcescontrolSageMakerLambda74DE8606",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+              },
+              "/test-invoke-stage/POST/action",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "apiGatewayResourcescontrolSageMakerApiactionPOSTApiPermissiontestapiGatewayResourcescontrolSageMakerApiBD332A0FPOSTactionFE187854": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LambdaResourcescontrolSageMakerLambda74DE8606",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
+              },
+              "/",
+              {
+                "Ref": "apiGatewayResourcescontrolSageMakerApiDeploymentStageprodA10C7908",
+              },
+              "/POST/action",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "apiGatewayResourceseventSourceMapping96A1724F": {
+      "Properties": {
+        "EventSourceArn": {
+          "Fn::GetAtt": [
+            "KinesisResourceskinesisDataStream0EF13F28",
+            "Arn",
+          ],
+        },
+        "FunctionName": {
+          "Ref": "apiGatewayResourceskdsConsumerLambda91BF4D1C",
+        },
+        "StartingPosition": "LATEST",
+      },
+      "Type": "AWS::Lambda::EventSourceMapping",
+    },
+    "apiGatewayResourceskdsConsumerLambda91BF4D1C": {
+      "DependsOn": [
+        "apiGatewayResourceskdsConsumerRoleDefaultPolicyAA587B7C",
+        "apiGatewayResourceskdsConsumerRole6D772435",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "e7d4cd1b2eea69e1ff3029923c13d71e580ba23b10a1d47225ce66afa7b6ac4a.zip",
+        },
+        "Environment": {
+          "Variables": {
+            "API_GATEWAY_ENDPOINT": {
+              "Fn::Join": [
+                "",
+                [
+                  "https://",
+                  {
+                    "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+                  },
+                  ".execute-api.",
+                  {
+                    "Ref": "AWS::Region",
+                  },
+                  ".amazonaws.com/dev",
+                ],
+              ],
+            },
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+            "CONNECTION_TABLE": {
+              "Ref": "DatabaseResourcesconnectionTable4B78CE15",
+            },
+            "LOG_LEVEL": "INFO",
+            "STREAM_NAME": {
+              "Ref": "KinesisResourceskinesisDataStream0EF13F28",
+            },
+            "TRANSCRIBE_TABLE": {
+              "Ref": "DatabaseResourcescallTableC5E68922",
+            },
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "apiGatewayResourceskdsConsumerRole6D772435",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 60,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "apiGatewayResourceskdsConsumerRole6D772435": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "apiGatewayResourceskdsConsumerRoleDefaultPolicyAA587B7C": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "DatabaseResourcescallTableC5E68922",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Ref": "AWS::NoValue",
+                },
+              ],
+            },
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "DatabaseResourcesconnectionTable4B78CE15",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Ref": "AWS::NoValue",
+                },
+              ],
+            },
+            {
+              "Action": [
+                "kinesis:DescribeStreamSummary",
+                "kinesis:GetRecords",
+                "kinesis:GetShardIterator",
+                "kinesis:ListShards",
+                "kinesis:SubscribeToShard",
+                "kinesis:DescribeStream",
+                "kinesis:ListStreams",
+                "kinesis:DescribeStreamConsumer",
+                "kinesis:PutRecord",
+                "kinesis:PutRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "KinesisResourceskinesisDataStream0EF13F28",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": "execute-api:ManageConnections",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":",
+                    {
+                      "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+                    },
+                    "/dev/*/@connections/*",
+                  ],
+                ],
+              },
+            },
+            {
+              "Action": "execute-api:ManageConnections",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":",
+                    {
+                      "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+                    },
+                    "/*/*/@connections/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "apiGatewayResourceskdsConsumerRoleDefaultPolicyAA587B7C",
+        "Roles": [
+          {
+            "Ref": "apiGatewayResourceskdsConsumerRole6D772435",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "apiGatewayResourceswebSocketApi8624DD60": {
+      "Properties": {
+        "Name": "summarizerWebSocketApi",
+        "ProtocolType": "WEBSOCKET",
+        "RouteSelectionExpression": "$request.body.action",
+      },
+      "Type": "AWS::ApiGatewayV2::Api",
+    },
+    "apiGatewayResourceswebSocketApiconnectRoute9EBA9016": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+        },
+        "AuthorizationType": "NONE",
+        "RouteKey": "$connect",
+        "Target": {
+          "Fn::Join": [
+            "",
+            [
+              "integrations/",
+              {
+                "Ref": "apiGatewayResourceswebSocketApiconnectRouteConnectIntegration5F5D7C01",
+              },
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::ApiGatewayV2::Route",
+    },
+    "apiGatewayResourceswebSocketApiconnectRouteConnectIntegration5F5D7C01": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":apigateway:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":lambda:path/2015-03-31/functions/",
+              {
+                "Fn::GetAtt": [
+                  "apiGatewayResourceskdsConsumerLambda91BF4D1C",
+                  "Arn",
+                ],
+              },
+              "/invocations",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::ApiGatewayV2::Integration",
+    },
+    "apiGatewayResourceswebSocketApiconnectRouteConnectIntegrationPermission5F1CB3E3": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "apiGatewayResourceskdsConsumerLambda91BF4D1C",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+              },
+              "/*/*$connect",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "apiGatewayResourceswebSocketApidefaultRouteDefaultIntegration14F3A36D": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":apigateway:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":lambda:path/2015-03-31/functions/",
+              {
+                "Fn::GetAtt": [
+                  "apiGatewayResourceskdsConsumerLambda91BF4D1C",
+                  "Arn",
+                ],
+              },
+              "/invocations",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::ApiGatewayV2::Integration",
+    },
+    "apiGatewayResourceswebSocketApidefaultRouteDefaultIntegrationPermission9F2B159C": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "apiGatewayResourceskdsConsumerLambda91BF4D1C",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+              },
+              "/*/*$default",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "apiGatewayResourceswebSocketApidefaultRouteF6283379": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+        },
+        "AuthorizationType": "NONE",
+        "RouteKey": "$default",
+        "Target": {
+          "Fn::Join": [
+            "",
+            [
+              "integrations/",
+              {
+                "Ref": "apiGatewayResourceswebSocketApidefaultRouteDefaultIntegration14F3A36D",
+              },
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::ApiGatewayV2::Route",
+    },
+    "apiGatewayResourceswebSocketApidisconnectRoute3F7E1B83": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+        },
+        "AuthorizationType": "NONE",
+        "RouteKey": "$disconnect",
+        "Target": {
+          "Fn::Join": [
+            "",
+            [
+              "integrations/",
+              {
+                "Ref": "apiGatewayResourceswebSocketApidisconnectRouteDisconnectIntegration832C014D",
+              },
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::ApiGatewayV2::Route",
+    },
+    "apiGatewayResourceswebSocketApidisconnectRouteDisconnectIntegration832C014D": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":apigateway:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":lambda:path/2015-03-31/functions/",
+              {
+                "Fn::GetAtt": [
+                  "apiGatewayResourceskdsConsumerLambda91BF4D1C",
+                  "Arn",
+                ],
+              },
+              "/invocations",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::ApiGatewayV2::Integration",
+    },
+    "apiGatewayResourceswebSocketApidisconnectRouteDisconnectIntegrationPermissionBD3321D1": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "apiGatewayResourceskdsConsumerLambda91BF4D1C",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+              },
+              "/*/*$disconnect",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "apiGatewayResourceswebSocketStage8D085EBB": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "apiGatewayResourceswebSocketApi8624DD60",
+        },
+        "AutoDeploy": true,
+        "StageName": "dev",
+      },
+      "Type": "AWS::ApiGatewayV2::Stage",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
