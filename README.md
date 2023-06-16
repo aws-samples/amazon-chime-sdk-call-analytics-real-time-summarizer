@@ -104,6 +104,8 @@ To test this demo, navigate to the Cloudfront Distribution webpage.
 
 If 'Endpoint Status' shows as 'Endpoint disabled', click on 'Start Endpoint' to enable the SageMaker endpoint (This could take few mins to enable). Once 'Endpoint Status' shows as 'InService', you are ready to test. 
 
+**Attention** This deployment includes Amazon SageMaker endpoint which you incur additional charges when you start the SageMaker endpoint. We recommend you to stop the Amazon SageMaker endpoint by clicking on the 'Stop Endpoint' button once finished with the experiment to avoid unexpected charges. See [Amazon SageMaker pricing](https://aws.amazon.com/sagemaker/pricing/) for relevant costs.
+
 Call the included phone number. When the call is answered, a WAV file will be played simulating the responses from a sample agent.
 
 ## Results
@@ -129,8 +131,6 @@ To deploy this demo:
 ```
 yarn launch
 ```
-
-Attention: This deployment includes Amazon SageMaker endpoint which you incur additional charges when you start the SageMaker endpoint. We recommend you to stop the Amazon SageMaker endpoint by clicking on the 'Stop Endpoint' button once finished with the experiment to avoid unexpected charges. See [Amazon SageMaker pricing](https://aws.amazon.com/sagemaker/pricing/) for relevant costs.
 
 ### Cleanup
 
