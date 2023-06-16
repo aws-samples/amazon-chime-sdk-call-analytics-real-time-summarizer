@@ -50,6 +50,7 @@ export class VPCResources extends Construct {
         vpc: this.vpc,
         internetFacing: true,
         securityGroup: this.albSecurityGroup,
+        dropInvalidHeaderFields: true,
       },
     );
 
@@ -59,7 +60,6 @@ export class VPCResources extends Construct {
       allowAllOutbound: true,
     });
 
-    this.sshSecurityGroup.addIngressRule(Peer.anyIpv4(), Port.tcp(22));
     this.sshSecurityGroup.addIngressRule(Peer.anyIpv4(), Port.tcp(3000));
 
     this.voiceSecurityGroup = new SecurityGroup(this, 'ServerSecurityGroup', {
