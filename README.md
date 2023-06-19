@@ -123,6 +123,7 @@ Once the call has been completed, and the summarization produced, the result wil
 - AWS account
 - Basic understanding of telephony
 - [Request access to Amazon SageMaker - Foundation models](https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-use.html) (this could take few days) 
+- [Subscribe to Cohere Generate Model - Command-Light](https://aws.amazon.com/marketplace/pp/prodview-6dmzzso5vu5my) at AWS Marketplace
 
 ### Deploy
 
