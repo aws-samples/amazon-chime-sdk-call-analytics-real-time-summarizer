@@ -70,6 +70,8 @@ interface KinesisRecord {
 exports.handler = async (
   event: APIGatewayProxyEvent | { Records: KinesisStreamRecord[] },
 ) => {
+  console.log(`Event: ${JSON.stringify(event, null, 2)}`);
+
   // API Gateway handling
   if ('requestContext' in event) {
     const apiGatewayEvent = event as APIGatewayProxyEvent;

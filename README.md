@@ -6,7 +6,7 @@ In this demo we see how to create a near real-time call summarizer using the Ama
 
 ## Technical Overview
 
-![Overview](/images/AmazonChimeSDKRealTimeSummarizer.png)
+![Overview](/images/Overview.png)
 
 ### Capturing Transcripts
 
@@ -100,13 +100,7 @@ Because we have been capturing the transcription results as they are created, th
 
 ## Testing
 
-To test this demo, navigate to the Cloudfront Distribution webpage. 
-
-If 'Endpoint Status' shows as 'Endpoint disabled', click on 'Start Endpoint' to enable the SageMaker endpoint (This could take few mins to enable). Once 'Endpoint Status' shows as 'InService', you are ready to test. 
-
-**Attention** This deployment includes Amazon SageMaker endpoint which you incur additional charges when you start the SageMaker endpoint. We recommend you to stop the Amazon SageMaker endpoint by clicking on the 'Stop Endpoint' button once finished with the experiment to avoid unexpected charges. See [Amazon SageMaker pricing](https://aws.amazon.com/sagemaker/pricing/) for relevant costs.
-
-Call the included phone number. When the call is answered, a WAV file will be played simulating the responses from a sample agent.
+To test this demo, navigate to the Cloudfront Distribution webpage and call the included phone number. When the call is answered, a WAV file will be played simulating the responses from a sample agent.
 
 ## Results
 
@@ -122,8 +116,6 @@ Once the call has been completed, and the summarization produced, the result wil
 - Docker desktop - https://www.docker.com/products/docker-desktop/
 - AWS account
 - Basic understanding of telephony
-- [Request access to Amazon SageMaker - Foundation models](https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-use.html) (this could take few days) 
-- [Subscribe to Cohere Generate Model - Command-Light](https://aws.amazon.com/marketplace/pp/prodview-6dmzzso5vu5my) at AWS Marketplace
 
 ### Deploy
 
