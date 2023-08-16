@@ -1454,7 +1454,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "0a4643c6727a8d0783bb371888423b147e475ccbcd4622fc0055160b06c74c7d.zip",
+          "S3Key": "2b483a8553fb212fa7cc1a84c621a540b640b1e3a27fa7946d9345aa37ff648c.zip",
         },
         "Description": "src/resources/media-pipelines/media-pipelines.lambda.ts",
         "Environment": {
@@ -2287,7 +2287,7 @@ usermod -a -G www-data ubuntu
           },
         ],
         "SourceObjectKeys": [
-          "93d0617d20ad696695dfc855ba82fb6642058221a67b419fa09acb7c16342ccc.zip",
+          "8fbad5e317486694dc3aef2f1b46b7e9ea7377063d6235905bb790e9680e01bf.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
@@ -2751,7 +2751,7 @@ usermod -a -G www-data ubuntu
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "3863dbe36cafbd9e5c7f9cf4f5f8cf4084b911e2ceaffd860c8878313fbc8856.zip",
+          "S3Key": "713feb5b92242afc1a5123fde6ca3e7791ac5a6b86ae762a68a992048681f030.zip",
         },
         "Description": "src/resources/pstn/pstn.lambda.ts",
         "Environment": {
@@ -3131,7 +3131,7 @@ usermod -a -G www-data ubuntu
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "3863dbe36cafbd9e5c7f9cf4f5f8cf4084b911e2ceaffd860c8878313fbc8856.zip",
+          "S3Key": "713feb5b92242afc1a5123fde6ca3e7791ac5a6b86ae762a68a992048681f030.zip",
         },
         "Description": "src/resources/pstn/pstn.lambda.ts",
         "Environment": {
