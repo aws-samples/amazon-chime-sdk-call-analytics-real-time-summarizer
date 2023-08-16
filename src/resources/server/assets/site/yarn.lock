@@ -23,9 +23,9 @@
     tslib "^2.3.1"
 
 "@cloudscape-design/components@^3.0.303":
-  version "3.0.354"
-  resolved "https://registry.yarnpkg.com/@cloudscape-design/components/-/components-3.0.354.tgz#c7c55de93da8d5d8cd7a0e1522ea785784d7a0e5"
-  integrity sha512-gCBozuKCfVpxEQck7HgfvdG97g1OH6LEUUsjZotCe57x9JZLJukklX5ixVLUjcNZ8GMm/tfGdU5wjUYtRpJolw==
+  version "3.0.358"
+  resolved "https://registry.yarnpkg.com/@cloudscape-design/components/-/components-3.0.358.tgz#94db1ac978f7820b01252ec40c8dc6a1236fe887"
+  integrity sha512-LYmSPz3M0F4Exi8trwoFrBxmxziwyiT6Grq5muWmf1eHzzRlrZMdyWNVXiYjoe5waRUvfvkQ1JKpy9ZY7tsl5A==
   dependencies:
     "@cloudscape-design/collection-hooks" "^1.0.0"
     "@cloudscape-design/component-toolkit" "^1.0.0-beta"
@@ -59,9 +59,9 @@
   integrity sha512-MIe4QBH8pztGrfKpmky38d8OKGxtPbZGeFu/1RPlub12lnI7Dwf+U2E2DVw0vS7tUFAxUscBHZY000XpWHK0fg==
 
 "@cloudscape-design/test-utils-core@^1.0.0":
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/@cloudscape-design/test-utils-core/-/test-utils-core-1.0.14.tgz#8c77c1e2ecea2dd17e18868cb9ada9f240157662"
-  integrity sha512-4VTCFJq3RXUFNPT6jsYDsjwgVNtBP/E1Iuwjnp7ZszqY7vLlPMTP2AbFImGPMbN9h2oB3mAzxM7wK+TSw0xvxA==
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@cloudscape-design/test-utils-core/-/test-utils-core-1.0.15.tgz#66f35773af7c2d50a6002035313b4ff5cd281571"
+  integrity sha512-rYo8QJ78EgTvw2Gh/dAUpCfq8WNV5eWRQ11wr6mnn6VwZCRp7qPZcF19ngdwiUqZo5y0gwuXlW7bt4AxX8GdQg==
   dependencies:
     css-selector-tokenizer "^0.8.0"
     css.escape "^1.5.1"
@@ -307,9 +307,9 @@
   integrity sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==
 
 "@types/node@*":
-  version "20.4.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.4.8.tgz#b5dda19adaa473a9bf0ab5cbd8f30ec7d43f5c85"
-  integrity sha512-0mHckf6D2DiIAzh8fM8f3HQCvMKDpK94YQ0DSVkfWTG9BZleYIWudw9cJxX8oCk9bM+vAkDyujDV6dmKHbvQpg==
+  version "20.5.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.0.tgz#7fc8636d5f1aaa3b21e6245e97d56b7f56702313"
+  integrity sha512-Mgq7eCtoTjT89FqNoTzzXg2XvCi5VMhRV6+I2aYanc6kQCBImeNaAYRs/DyoVqk1YEUJK5gN9VO7HRIdz4Wo3Q==
 
 "@types/prop-types@*":
   version "15.7.5"
@@ -334,9 +334,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^18.2.5":
-  version "18.2.18"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.18.tgz#c8b233919eef1bdc294f6f34b37f9727ad677516"
-  integrity sha512-da4NTSeBv/P34xoZPhtcLkmZuJ+oYaCxHmyHzwaDQo9RQPBeXV+06gEk2FpqEcsX9XrnNLvRpVh6bdavDSjtiQ==
+  version "18.2.20"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.20.tgz#1605557a83df5c8a2cc4eeb743b3dfc0eb6aaeb2"
+  integrity sha512-WKNtmsLWJM/3D5mG4U84cysVY31ivmyw85dE84fOCk5Hx78wezB/XEjVPWl2JTZ5FkEeaTJf+VgUAUn3PE7Isw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -545,9 +545,9 @@ accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.8:
     negotiator "0.6.3"
 
 ace-builds@^1.23.0:
-  version "1.23.4"
-  resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.23.4.tgz#4f2c813bbdc886a67224be255ab32a280f779a9a"
-  integrity sha512-a4hKAT2T7KNUQC4LQPW2peuoEsZmLYTn4Dwjkh26A3Z+fQ8/fA2JZNs3V6CqvivhbyMQXQJD1u/0qTCoSS6deA==
+  version "1.24.0"
+  resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.24.0.tgz#2e30b3530d486ac3cee6e5531c4b3d34baa382b3"
+  integrity sha512-PdM2yG0zK4KBndvZw0Nc0wRLv/U0/HVVzyC9GpZNgsAaNokbcFQYtMIl3lLtkAxXa+fuePyEaFySNQej+WYEFg==
 
 acorn-import-assertions@^1.9.0:
   version "1.9.0"
@@ -738,9 +738,9 @@ camel-case@^4.1.2:
     tslib "^2.0.3"
 
 caniuse-lite@^1.0.30001517:
-  version "1.0.30001519"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001519.tgz#3e7b8b8a7077e78b0eb054d69e6edf5c7df35601"
-  integrity sha512-0QHgqR+Jv4bxHMp8kZ1Kn8CH55OikjKJ6JmKkZYP1F3D7w+lnFXF70nG5eNfsZS89jadi5Ywy5UCSKLAglIRkg==
+  version "1.0.30001520"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001520.tgz#62e2b7a1c7b35269594cf296a80bdf8cb9565006"
+  integrity sha512-tahF5O9EiiTzwTUqAeFjIZbn4Dnqxzz7ktrgGlMYNLH43Ul26IgTMH/zvL3DG0lZxBYnlT04axvInszUsZULdA==
 
 chalk@^4.1.0:
   version "4.1.2"
@@ -1097,9 +1097,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.477:
-  version "1.4.486"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.486.tgz#11bc573ecf245c183f55cfe32ba209a22a96237a"
-  integrity sha512-9zn9/2lbMGY/mFhoUymD9ODYdLY3zjUW/IW9ihU/sJVeIlD70m2aAb86S35aRGF+iwqLuQP25epruayZjKNjBw==
+  version "1.4.490"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.490.tgz#d99286f6e915667fa18ea4554def1aa60eb4d5f1"
+  integrity sha512-6s7NVJz+sATdYnIwhdshx/N/9O6rvMxmhVoDSDFdj6iA45gHR8EQje70+RYsF4GeB+k0IeNSBnP7yG9ZXJFr7A==
 
 encodeurl@~1.0.2:
   version "1.0.2"
