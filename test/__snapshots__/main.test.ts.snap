@@ -2287,7 +2287,7 @@ usermod -a -G www-data ubuntu
           },
         ],
         "SourceObjectKeys": [
-          "8fbad5e317486694dc3aef2f1b46b7e9ea7377063d6235905bb790e9680e01bf.zip",
+          "6bf00213ebdec2707fcb4e74b8b5390d432fb0493418d02abfc7d04958cb8a50.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
