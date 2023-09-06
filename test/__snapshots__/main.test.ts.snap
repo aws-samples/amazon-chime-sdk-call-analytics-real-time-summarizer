@@ -76,7 +76,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "099a3112386fa620b3069790dcf92c8e64bb5341760a8b0a76bfa843f8ad41df.zip",
+          "S3Key": "ba5407117985fa148f61d8537da4904529e5c8264aed5d840f0a26700b5471fc.zip",
         },
         "Handler": "index.handler",
         "Role": {
@@ -1081,7 +1081,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "5cc92ed0cea39e2b8de2dbc527dfb5980a3af9564bd1084d840b9787c7d0467e.zip",
+          "S3Key": "1039a174afbf09cd27e3b215f53b9e80b1bd66df24547e5746f0e5bcb9204cf3.zip",
         },
         "Handler": "index.handler",
         "Role": {
@@ -2287,7 +2287,7 @@ usermod -a -G www-data ubuntu
           },
         ],
         "SourceObjectKeys": [
-          "8fbad5e317486694dc3aef2f1b46b7e9ea7377063d6235905bb790e9680e01bf.zip",
+          "93d0617d20ad696695dfc855ba82fb6642058221a67b419fa09acb7c16342ccc.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
