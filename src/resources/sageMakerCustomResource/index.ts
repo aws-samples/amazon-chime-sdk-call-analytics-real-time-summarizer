@@ -127,7 +127,7 @@ async function deleteSagemakerInstance() {
     console.info(`Endpoint ${endpointName} deleted`);
   } catch (error) {
     console.error('Error:', error);
-    throw new Error('Error Deleting Endpoint');
+    // throw new Error('Error Deleting Endpoint');
   }
 
   console.info('Deleting Sagemaker Endpoint Configuration');
@@ -138,7 +138,7 @@ async function deleteSagemakerInstance() {
     console.info(`Endpoint Configuration ${endpointName} deleted`);
   } catch (error) {
     console.error('Error:', error);
-    throw new Error('Error Deleting Endpoint Configuration');
+    // throw new Error('Error Deleting Endpoint Configuration');
   }
 
   console.info('Deleting Sagemaker Model');
@@ -147,6 +147,6 @@ async function deleteSagemakerInstance() {
     console.info(`Model ${modelName} deleted`);
   } catch (error) {
     console.error('Error:', error);
-    throw new Error('Error Deleting Model');
+    // throw new Error('Error Deleting Model');
   }
 }

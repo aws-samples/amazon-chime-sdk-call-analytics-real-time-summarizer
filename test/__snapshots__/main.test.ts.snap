@@ -867,7 +867,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "8e4edb854e546b979984e10c2b59c52ad769248c799a8a8b50cd67f75fa51151.zip",
+          "S3Key": "2f609cb32375efb6965588c69e42476a6e3c19ab316ddf9f9b544de53f3f94f6.zip",
         },
         "Environment": {
           "Variables": {
@@ -2287,7 +2287,7 @@ usermod -a -G www-data ubuntu
           },
         ],
         "SourceObjectKeys": [
-          "93d0617d20ad696695dfc855ba82fb6642058221a67b419fa09acb7c16342ccc.zip",
+          "6bf00213ebdec2707fcb4e74b8b5390d432fb0493418d02abfc7d04958cb8a50.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
