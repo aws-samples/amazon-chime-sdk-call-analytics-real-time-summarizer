@@ -486,7 +486,7 @@ exports[`Snapshot 1`] = `
       "Properties": {
         "Code": {
           "ImageUri": {
-            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:d6462c8bde67bab1d6230eccc65a4618916ded9a36aa877f34c0673ca9c52af6",
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:760c0ff2687506887df1f19025bf8094190e9b5139a05a6fcfb804aed42846db",
           },
         },
         "Environment": {
@@ -2288,7 +2288,7 @@ usermod -a -G www-data ubuntu
           },
         ],
         "SourceObjectKeys": [
-          "134e1d3536f2ae682794eb16ffce7fb46519d6ffdd7846e370a97536515374b7.zip",
+          "fa24e8a75ba0a3d8ac38470bc106692d0906256401ec087c2622061f174989f3.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
