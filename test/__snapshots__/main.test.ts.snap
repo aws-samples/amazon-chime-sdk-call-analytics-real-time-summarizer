@@ -194,6 +194,7 @@ exports[`Snapshot 1`] = `
               "Action": [
                 "s3:GetObject*",
                 "s3:GetBucket*",
+                "s3:HeadObject",
                 "s3:List*",
               ],
               "Effect": "Allow",
@@ -235,6 +236,7 @@ exports[`Snapshot 1`] = `
               "Action": [
                 "s3:GetObject*",
                 "s3:GetBucket*",
+                "s3:HeadObject",
                 "s3:List*",
                 "s3:DeleteObject*",
                 "s3:PutObject",
@@ -2288,7 +2290,7 @@ usermod -a -G www-data ubuntu
           },
         ],
         "SourceObjectKeys": [
-          "fa24e8a75ba0a3d8ac38470bc106692d0906256401ec087c2622061f174989f3.zip",
+          "a93305793ef7f54e82d53b05dbef139c49797c867a9d06bf073ed1ddf4b5f15a.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
@@ -2424,6 +2426,7 @@ usermod -a -G www-data ubuntu
               "Action": [
                 "s3:GetObject*",
                 "s3:GetBucket*",
+                "s3:HeadObject",
                 "s3:List*",
                 "s3:DeleteObject*",
                 "s3:PutObject",
