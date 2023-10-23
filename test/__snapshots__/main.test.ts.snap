@@ -76,7 +76,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "ba5407117985fa148f61d8537da4904529e5c8264aed5d840f0a26700b5471fc.zip",
+          "S3Key": "17c16a3854838fd3ff4bda08146122a6701f33b9c86ae17f415ad0dc47a97544.zip",
         },
         "Handler": "index.handler",
         "Role": {
@@ -194,6 +194,7 @@ exports[`Snapshot 1`] = `
               "Action": [
                 "s3:GetObject*",
                 "s3:GetBucket*",
+                "s3:HeadObject",
                 "s3:List*",
               ],
               "Effect": "Allow",
@@ -235,6 +236,7 @@ exports[`Snapshot 1`] = `
               "Action": [
                 "s3:GetObject*",
                 "s3:GetBucket*",
+                "s3:HeadObject",
                 "s3:List*",
                 "s3:DeleteObject*",
                 "s3:PutObject",
@@ -289,7 +291,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "a657308e723bb9460b800cb3b47dadb74e28243edfe246bf7755c45ec312eb97.zip",
+          "S3Key": "b7f33614a69548d6bafe224d751a7ef238cde19097415e553fe8b63a4c8fd8a6.zip",
         },
         "Description": {
           "Fn::Join": [
@@ -486,7 +488,7 @@ exports[`Snapshot 1`] = `
       "Properties": {
         "Code": {
           "ImageUri": {
-            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:f9a130a2a08ac2df9d7ba083d6d0da304b6ab69f812a773dc54460db2a8c21fc",
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:f51551448428e0c51fc738a594c77dc5818c16c50339d9a67b36f0f30c1b2cc6",
           },
         },
         "Environment": {
@@ -907,7 +909,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "f2d30cfc360482320a52a4fcde8a70f3569df79ab30be24650fda58eb60052cf.zip",
+          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
         },
         "Description": "AWS CDK resource provider framework - onEvent (test/LambdaResources/sageMakerCustomResourceProvider)",
         "Environment": {
@@ -1081,7 +1083,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "1039a174afbf09cd27e3b215f53b9e80b1bd66df24547e5746f0e5bcb9204cf3.zip",
+          "S3Key": "5bc602ecde93c947efe5899ae355f999986a1acbe610b1c0b9c468d738857555.zip",
         },
         "Handler": "index.handler",
         "Role": {
@@ -1091,6 +1093,7 @@ exports[`Snapshot 1`] = `
           ],
         },
         "Runtime": "nodejs18.x",
+        "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -1347,7 +1350,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "f2d30cfc360482320a52a4fcde8a70f3569df79ab30be24650fda58eb60052cf.zip",
+          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
         },
         "Description": "AWS CDK resource provider framework - onEvent (test/MediaPipelineResources/transcribeConfiguration/mediaPipelinesInsightRequest/MediaPipelineResourceProvider)",
         "Environment": {
@@ -2287,7 +2290,7 @@ usermod -a -G www-data ubuntu
           },
         ],
         "SourceObjectKeys": [
-          "fa24e8a75ba0a3d8ac38470bc106692d0906256401ec087c2622061f174989f3.zip",
+          "a93305793ef7f54e82d53b05dbef139c49797c867a9d06bf073ed1ddf4b5f15a.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
@@ -2326,6 +2329,7 @@ usermod -a -G www-data ubuntu
           "Statement": [
             {
               "Action": [
+                "s3:PutBucketPolicy",
                 "s3:GetBucket*",
                 "s3:List*",
                 "s3:DeleteObject*",
@@ -2422,6 +2426,7 @@ usermod -a -G www-data ubuntu
               "Action": [
                 "s3:GetObject*",
                 "s3:GetBucket*",
+                "s3:HeadObject",
                 "s3:List*",
                 "s3:DeleteObject*",
                 "s3:PutObject",
@@ -2513,7 +2518,7 @@ usermod -a -G www-data ubuntu
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "f2d30cfc360482320a52a4fcde8a70f3569df79ab30be24650fda58eb60052cf.zip",
+          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
         },
         "Description": "AWS CDK resource provider framework - onEvent (test/VCResources/phoneNumber/ChimePhoneNumber/PSTNResourceProvider)",
         "Environment": {
@@ -2868,7 +2873,7 @@ usermod -a -G www-data ubuntu
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "f2d30cfc360482320a52a4fcde8a70f3569df79ab30be24650fda58eb60052cf.zip",
+          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
         },
         "Description": "AWS CDK resource provider framework - onEvent (test/VCResources/voiceConnector/voiceConnectorRequest/PSTNResourceProvider)",
         "Environment": {
