@@ -6,7 +6,7 @@ In this demo we see how to create a near real-time call summarizer using the Ama
 
 ## Technical Overview
 
-![Overview](/images/Overview.png)
+![Overview](/images/AmazonChimeSDKRealTimeSummarizer.png)
 
 ### Capturing Transcripts
 
