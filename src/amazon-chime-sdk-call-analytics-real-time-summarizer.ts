@@ -4,7 +4,6 @@ import { Construct } from 'constructs';
 import { config } from 'dotenv';
 import {
   DatabaseResources,
-  SageMakerLambdaResources,
   EventBridgeLambdaResources,
   VPCResources,
   VCResources,
@@ -23,12 +22,8 @@ export interface AmazonChimeSDKCallAnalyticsRecordingStackProps
   sipRecCidrs: string;
   logLevel: string;
   removalPolicy: string;
-  endpointName: string;
-  cohereInstanceType: string;
-  modelPackageArn: string;
-  modelName: string;
-  createSageMakerOnStart: string;
 }
+
 export class AmazonChimeSDKCallAnalyticsRealTimeSummarizer extends Stack {
   constructor(
     scope: Construct,
@@ -42,21 +37,6 @@ export class AmazonChimeSDKCallAnalyticsRealTimeSummarizer extends Stack {
     });
 
     const kinesisResources = new KinesisResources(this, 'KinesisResources');
-
-    const sagerMakerLambdaResources = new SageMakerLambdaResources(
-      this,
-      'LambdaResources',
-      {
-        transcribeTable: databaseResources.transcribeTable,
-        logLevel: props.logLevel,
-        endpointName: props.endpointName,
-        modelPackageArn: props.modelPackageArn,
-        cohereInstanceType: props.cohereInstanceType,
-        modelName: props.modelName,
-        kinesisDataStream: kinesisResources.kinesisDataStream,
-        createSageMakerOnStart: props.createSageMakerOnStart,
-      },
-    );
 
     const mediaPipelineResources = new MediaPipelineResources(
       this,
@@ -74,22 +54,15 @@ export class AmazonChimeSDKCallAnalyticsRealTimeSummarizer extends Stack {
         connectionTable: databaseResources.connectionTable,
         transcribeTable: databaseResources.transcribeTable,
         logLevel: props.logLevel,
-        controlSageMakerLambda:
-          sagerMakerLambdaResources.controlSageMakerLambda,
       },
     );
 
     new EventBridgeLambdaResources(this, 'EventBridgeLambdaResources', {
       transcribeTable: databaseResources.transcribeTable,
       logLevel: props.logLevel,
-      endpointName: props.endpointName,
-      modelPackageArn: props.modelPackageArn,
-      cohereInstanceType: props.cohereInstanceType,
-      modelName: props.modelName,
       kinesisDataStream: kinesisResources.kinesisDataStream,
       webSocketApi: apiGatewayResources.webSocketApi,
       webSocketStage: apiGatewayResources.webSocketStage,
-      sageMakerRole: sagerMakerLambdaResources.sageMakerRole,
       connectionTable: databaseResources.connectionTable,
     });
 
@@ -114,7 +87,6 @@ export class AmazonChimeSDKCallAnalyticsRealTimeSummarizer extends Stack {
       webSocketApi: apiGatewayResources.webSocketApi,
       webSocketStage: apiGatewayResources.webSocketStage,
       logLevel: props.logLevel,
-      controlSageMakerApi: apiGatewayResources.controlSageMakerApi,
     });
 
     const distributionResources = new DistributionResources(
@@ -144,16 +116,9 @@ const devEnv = {
 
 const summarizerProps = {
   buildAsterisk: process.env.BUILD_ASTERISK || 'true',
-  createSageMakerOnStart: process.env.CREATE_SAGEMAKER_ON_START || 'false',
   sipRecCidrs: process.env.SIPREC_CIDRS || '',
   logLevel: process.env.LOG_LEVEL || 'INFO',
   removalPolicy: process.env.REMOVAL_POLICY || 'DESTROY',
-  modelName: process.env.MODEL_NAME || 'deployed-cohere-gpt-medium',
-  endpointName: process.env.ENDPOINT_NAME || 'deployed-cohere-gpt-medium',
-  cohereInstanceType: process.env.COHERE_INSTANCE_TYPE || 'ml.g5.xlarge',
-  modelPackageArn:
-    process.env.MODEL_PACKAGE_ARN ||
-    'arn:aws:sagemaker:us-east-1:865070037744:model-package/cohere-gpt-medium-v1-5-15e34931a06235b7bac32dca396a970a',
 };
 
 new AmazonChimeSDKCallAnalyticsRealTimeSummarizer(

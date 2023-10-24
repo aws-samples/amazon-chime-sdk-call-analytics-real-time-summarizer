@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "coherelayer"
+name = "summarizer"
 version = "0.1.0"
 description = ""
 authors = ["Court Schuett <schuettc@amazon.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
-cohere-sagemaker = "^0.5.0"
+python = "^3.11"
+boto3 = "^1.28.68"
 
 
 [build-system]

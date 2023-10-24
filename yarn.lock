@@ -138,7 +138,7 @@
     "@smithy/util-utf8" "^2.0.0"
     tslib "^2.5.0"
 
-"@aws-sdk/client-chime-sdk-identity@latest":
+"@aws-sdk/client-chime-sdk-identity@^3.428.0":
   version "3.433.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-chime-sdk-identity/-/client-chime-sdk-identity-3.433.0.tgz#ee5a0cdae406bddfbcab46d7f22e6baa9c33f7de"
   integrity sha512-mM+YWKDngg2qM3gkKn/hNUjmPdBtLQoSwmJHoIaawXIX9SdN91RnQ/ukOU8Gb79wDMXgi5qKQQlER5mK0e4uRw==
@@ -182,7 +182,7 @@
     tslib "^2.5.0"
     uuid "^8.3.2"
 
-"@aws-sdk/client-chime-sdk-media-pipelines@latest":
+"@aws-sdk/client-chime-sdk-media-pipelines@^3.428.0":
   version "3.433.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-chime-sdk-media-pipelines/-/client-chime-sdk-media-pipelines-3.433.0.tgz#ff97c3a6aaecf0d17a6b7371a792a9f358539b18"
   integrity sha512-hWcZSwr7AxV2/ZaSYH2MP6Vs0uoMR6TlldhGythPVmR3Vre8GCAZBFydc1TQC6RN0Z1VZVFilw9udT9CzPKb2g==
@@ -226,7 +226,7 @@
     tslib "^2.5.0"
     uuid "^8.3.2"
 
-"@aws-sdk/client-chime-sdk-messaging@latest":
+"@aws-sdk/client-chime-sdk-messaging@^3.428.0":
   version "3.433.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-chime-sdk-messaging/-/client-chime-sdk-messaging-3.433.0.tgz#c07816b1387842ea023dce8b82b58b621f005921"
   integrity sha512-ecq59NJkt23nTpqMKr/uhp2Whxiu9IYo+WcIe7stnhDAObZVgKhm2LMSRby+MS3KkLk/NgrpQvwX7Wx9m3kUkA==
@@ -270,7 +270,7 @@
     tslib "^2.5.0"
     uuid "^8.3.2"
 
-"@aws-sdk/client-chime-sdk-voice@latest":
+"@aws-sdk/client-chime-sdk-voice@^3.428.0":
   version "3.433.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-chime-sdk-voice/-/client-chime-sdk-voice-3.433.0.tgz#6d7892d9232ede54c48b1c794af078d2081a0d7c"
   integrity sha512-K24PfbF6mZ7k5pxyl55fRefmyfIRb0fXWjKT6fWuzbkwnJCPifUMDK3UH92Mi2gt8sFvIHS718sgcSdhwNBZKA==
@@ -312,50 +312,6 @@
     "@smithy/util-retry" "^2.0.5"
     "@smithy/util-utf8" "^2.0.0"
     tslib "^2.5.0"
-
-"@aws-sdk/client-chime@^3.388.0":
-  version "3.433.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-chime/-/client-chime-3.433.0.tgz#07751237102bc3f5780df4a61001909c5a61d226"
-  integrity sha512-IhZ2GqnuKHy/UZip+p9/L4v8HU5h614v2v5tTxU35qsSUMEmUTUH3TXBEtI1CXO2j0yELAysoYlfDERrMyMH/w==
-  dependencies:
-    "@aws-crypto/sha256-browser" "3.0.0"
-    "@aws-crypto/sha256-js" "3.0.0"
-    "@aws-sdk/client-sts" "3.433.0"
-    "@aws-sdk/credential-provider-node" "3.433.0"
-    "@aws-sdk/middleware-host-header" "3.433.0"
-    "@aws-sdk/middleware-logger" "3.433.0"
-    "@aws-sdk/middleware-recursion-detection" "3.433.0"
-    "@aws-sdk/middleware-signing" "3.433.0"
-    "@aws-sdk/middleware-user-agent" "3.433.0"
-    "@aws-sdk/region-config-resolver" "3.433.0"
-    "@aws-sdk/types" "3.433.0"
-    "@aws-sdk/util-endpoints" "3.433.0"
-    "@aws-sdk/util-user-agent-browser" "3.433.0"
-    "@aws-sdk/util-user-agent-node" "3.433.0"
-    "@smithy/config-resolver" "^2.0.16"
-    "@smithy/fetch-http-handler" "^2.2.4"
-    "@smithy/hash-node" "^2.0.12"
-    "@smithy/invalid-dependency" "^2.0.12"
-    "@smithy/middleware-content-length" "^2.0.14"
-    "@smithy/middleware-endpoint" "^2.1.3"
-    "@smithy/middleware-retry" "^2.0.18"
-    "@smithy/middleware-serde" "^2.0.12"
-    "@smithy/middleware-stack" "^2.0.6"
-    "@smithy/node-config-provider" "^2.1.3"
-    "@smithy/node-http-handler" "^2.1.8"
-    "@smithy/protocol-http" "^3.0.8"
-    "@smithy/smithy-client" "^2.1.12"
-    "@smithy/types" "^2.4.0"
-    "@smithy/url-parser" "^2.0.12"
-    "@smithy/util-base64" "^2.0.0"
-    "@smithy/util-body-length-browser" "^2.0.0"
-    "@smithy/util-body-length-node" "^2.1.0"
-    "@smithy/util-defaults-mode-browser" "^2.0.16"
-    "@smithy/util-defaults-mode-node" "^2.0.21"
-    "@smithy/util-retry" "^2.0.5"
-    "@smithy/util-utf8" "^2.0.0"
-    tslib "^2.5.0"
-    uuid "^8.3.2"
 
 "@aws-sdk/client-dynamodb@^3.433.0":
   version "3.433.0"
@@ -450,7 +406,7 @@
     tslib "^2.5.0"
     uuid "^8.3.2"
 
-"@aws-sdk/client-ssm@^3.388.0":
+"@aws-sdk/client-ssm@^3.428.0":
   version "3.433.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-ssm/-/client-ssm-3.433.0.tgz#e33ebee732ef858d181eb64fc8e7cd44d04fc56d"
   integrity sha512-jwEG3wiY7eVLjfxo/EoYkvNLVY5NtM282/vtMlxw5V34SG3vcNSk2EZyxmn4OmnEG/NxoMQzyr3Z9IaIyxTHUQ==
@@ -2171,7 +2127,7 @@
     "@tufjs/canonical-json" "1.0.0"
     minimatch "^9.0.0"
 
-"@types/aws-lambda@^8.10.119", "@types/aws-lambda@^8.10.125":
+"@types/aws-lambda@^8.10.124", "@types/aws-lambda@^8.10.125":
   version "8.10.125"
   resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.125.tgz#c2ba86f7d98fe1827a7b048e0d31a65a8b5aed8c"
   integrity sha512-Vqw/WMlV4O1fJT6capim01v7VLDZkcX1n6Yhb52E7IfnMqYbNfwHfyDV8rRN42NLBtdDvfaqcCqs2K0fr5ljZw==
@@ -2613,7 +2569,7 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-aws-cdk-lib@^2.70.0:
+aws-cdk-lib@^2.70.0, aws-cdk-lib@^2.93.0:
   version "2.102.0"
   resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.102.0.tgz#a2a7a970f4be24a2a7cca75293be58b4c1e6af39"
   integrity sha512-pYcKGlshU2j7n3f8TbJ1CCrwNnLsgGd17G7p/s9njIU8xakU4tIwuNyo4Q9HHQA7aUb3enPI/afAn1A6gp7TrA==
@@ -2896,19 +2852,20 @@ case@1.6.3, case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk-amazon-chime-resources@^2.4.57:
-  version "2.4.57"
-  resolved "https://registry.yarnpkg.com/cdk-amazon-chime-resources/-/cdk-amazon-chime-resources-2.4.57.tgz#a0c5e2678246721e00f755e4156409086c0aa802"
-  integrity sha512-9QnzHyNVWeJSAFVJDSpLAkOPRuovHvELT+NJnMZso/G/zWkjSi3LOrbwIRiAQOv2/Kky50PpKFsx9sX7o5g3Cw==
+cdk-amazon-chime-resources@^3.0.14:
+  version "3.0.14"
+  resolved "https://registry.yarnpkg.com/cdk-amazon-chime-resources/-/cdk-amazon-chime-resources-3.0.14.tgz#936ff33a42650dbf6383a05e03155e11f0c873bc"
+  integrity sha512-oi2/ZR8/Dis8nJeEUWdgE1vs38eJDUvQojTBXIXJSoAqokQL735ZK9ftUHVGe+MdZY4CIYCFou/YtClhlamMNg==
   dependencies:
-    "@aws-sdk/client-chime" "^3.388.0"
-    "@aws-sdk/client-chime-sdk-identity" latest
-    "@aws-sdk/client-chime-sdk-media-pipelines" latest
-    "@aws-sdk/client-chime-sdk-messaging" latest
-    "@aws-sdk/client-chime-sdk-voice" latest
-    "@aws-sdk/client-ssm" "^3.388.0"
-    "@types/aws-lambda" "^8.10.119"
+    "@aws-sdk/client-chime-sdk-identity" "^3.428.0"
+    "@aws-sdk/client-chime-sdk-media-pipelines" "^3.428.0"
+    "@aws-sdk/client-chime-sdk-messaging" "^3.428.0"
+    "@aws-sdk/client-chime-sdk-voice" "^3.428.0"
+    "@aws-sdk/client-ssm" "^3.428.0"
+    "@types/aws-lambda" "^8.10.124"
+    aws-cdk-lib "^2.93.0"
     aws-lambda "^1.0.7"
+    fs-extra "^11.1.1"
 
 chalk@^2.4.2:
   version "2.4.2"

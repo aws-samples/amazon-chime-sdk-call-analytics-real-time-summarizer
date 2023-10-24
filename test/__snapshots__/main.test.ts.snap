@@ -28,32 +28,6 @@ exports[`Snapshot 1`] = `
         ],
       },
     },
-    "apiGatewayResourcescontrolSageMakerApiEndpointE2509814": {
-      "Value": {
-        "Fn::Join": [
-          "",
-          [
-            "https://",
-            {
-              "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-            },
-            ".execute-api.",
-            {
-              "Ref": "AWS::Region",
-            },
-            ".",
-            {
-              "Ref": "AWS::URLSuffix",
-            },
-            "/",
-            {
-              "Ref": "apiGatewayResourcescontrolSageMakerApiDeploymentStageprodA10C7908",
-            },
-            "/",
-          ],
-        ],
-      },
-    },
   },
   "Parameters": {
     "BootstrapVersion": {
@@ -67,64 +41,10 @@ exports[`Snapshot 1`] = `
     },
   },
   "Resources": {
-    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiB6723FB92": {
       "DependsOn": [
-        "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "17c16a3854838fd3ff4bda08146122a6701f33b9c86ae17f415ad0dc47a97544.zip",
-        },
-        "Handler": "index.handler",
-        "Role": {
-          "Fn::GetAtt": [
-            "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 120,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
-      "DependsOn": [
-        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
-        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleDefaultPolicy96C3E726",
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1",
       ],
       "Properties": {
         "Code": {
@@ -144,9 +64,10 @@ exports[`Snapshot 1`] = `
             "Ref": "ServerResourcesassetBucketDeploymentAwsCliLayer0D02505B",
           },
         ],
+        "MemorySize": 512,
         "Role": {
           "Fn::GetAtt": [
-            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1",
             "Arn",
           ],
         },
@@ -155,7 +76,7 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::Lambda::Function",
     },
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1": {
       "Properties": {
         "AssumeRolePolicyDocument": {
           "Statement": [
@@ -186,7 +107,7 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::IAM::Role",
     },
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleDefaultPolicy96C3E726": {
       "Properties": {
         "PolicyDocument": {
           "Statement": [
@@ -194,7 +115,6 @@ exports[`Snapshot 1`] = `
               "Action": [
                 "s3:GetObject*",
                 "s3:GetBucket*",
-                "s3:HeadObject",
                 "s3:List*",
               ],
               "Effect": "Allow",
@@ -236,7 +156,6 @@ exports[`Snapshot 1`] = `
               "Action": [
                 "s3:GetObject*",
                 "s3:GetBucket*",
-                "s3:HeadObject",
                 "s3:List*",
                 "s3:DeleteObject*",
                 "s3:PutObject",
@@ -273,14 +192,258 @@ exports[`Snapshot 1`] = `
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleDefaultPolicy96C3E726",
         "Roles": [
           {
-            "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+            "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1",
           },
         ],
       },
       "Type": "AWS::IAM::Policy",
+    },
+    "CustomMediaPipelineResourcesCustomResourceProviderHandler44D83AC9": {
+      "DependsOn": [
+        "CustomMediaPipelineResourcesCustomResourceProviderRoleEC5C3B1F",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "d2507d8aaca6cf53a288783f9b77a71c475b20dbdcbcc9f01b1e3dc4e5553e4f.zip",
+        },
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": {
+          "Fn::GetAtt": [
+            "CustomMediaPipelineResourcesCustomResourceProviderRoleEC5C3B1F",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 300,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomMediaPipelineResourcesCustomResourceProviderRoleEC5C3B1F": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": [
+                    "chime:*MediaInsightsPipelineConfiguration",
+                    "chime:ListVoiceConnectors",
+                    "chime:tagResource",
+                    "s3:ListBucket",
+                    "kinesis:DescribeStream",
+                    "lambda:GetPolicy",
+                    "lambda:AddPermission",
+                    "chime:*",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": [
+                    "iam:PutRolePolicy",
+                    "iam:CreateServiceLinkedRole",
+                    "iam:PassRole",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": [
+                    "logs:DescribeLogGroups",
+                    "logs:CreateLogGroup",
+                    "logs:CreateLogStream",
+                    "logs:ListLogDeliveries",
+                    "logs:CreateLogDelivery",
+                    "logs:GetLogDelivery",
+                    "logs:DeleteLogDelivery",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": "ssm:*Parameter*",
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:ssm:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":parameter/chime/*",
+                      ],
+                    ],
+                  },
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "Inline",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CustomPSTNResourcesCustomResourceProviderHandlerD046A72D": {
+      "DependsOn": [
+        "CustomPSTNResourcesCustomResourceProviderRole536C0E76",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "4e1c22bfc3a8c9768d5a168814ab721614b22249283525e4b079d7b923a0442b.zip",
+        },
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": {
+          "Fn::GetAtt": [
+            "CustomPSTNResourcesCustomResourceProviderRole536C0E76",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 300,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomPSTNResourcesCustomResourceProviderRole536C0E76": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": [
+                    "chime:CreatePhoneNumberOrder",
+                    "chime:CreateSipMediaApplication",
+                    "chime:CreateSipRule",
+                    "chime:CreateVoiceConnector",
+                    "chime:CreateVoiceProfileDomain",
+                    "chime:DeletePhoneNumber",
+                    "chime:DeleteSipMediaApplication",
+                    "chime:DeleteSipRule",
+                    "chime:DeleteVoiceConnector",
+                    "chime:DeleteVoiceProfileDomain",
+                    "chime:GetPhoneNumber",
+                    "chime:GetPhoneNumberOrder",
+                    "chime:GetSipRule",
+                    "chime:ListPhoneNumbers",
+                    "chime:PutSipMediaApplicationLoggingConfiguration",
+                    "chime:PutVoiceConnectorLoggingConfiguration",
+                    "chime:PutVoiceConnectorOrigination",
+                    "chime:PutVoiceConnectorStreamingConfiguration",
+                    "chime:PutVoiceConnectorTermination",
+                    "chime:*MediaInsightsPipelineConfiguration",
+                    "chime:SearchAvailablePhoneNumbers",
+                    "chime:UpdateSipRule",
+                    "chime:AssociatePhoneNumbersWithVoiceConnector",
+                    "chime:DisassociatePhoneNumbersFromVoiceConnector",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": [
+                    "logs:DescribeLogGroups",
+                    "logs:CreateLogGroup",
+                    "logs:CreateLogStream",
+                    "logs:ListLogDeliveries",
+                    "logs:CreateLogDelivery",
+                    "logs:GetLogDelivery",
+                    "logs:DeleteLogDelivery",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": "iam:CreateServiceLinkedRole",
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": [
+                    "lambda:GetPolicy",
+                    "lambda:AddPermission",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                {
+                  "Action": "ssm:*Parameter*",
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:ssm:",
+                        {
+                          "Ref": "AWS::Region",
+                        },
+                        ":",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":parameter/chime/*",
+                      ],
+                    ],
+                  },
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "Inline",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
     },
     "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": {
       "DependsOn": [
@@ -436,12 +599,12 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::CloudFront::Distribution",
     },
-    "EventBridgeLambdaResourceschimeSdkRuleAllowEventRuletestEventBridgeLambdaResourcesstartSummarizationLambdaB7FFFE907C302062": {
+    "EventBridgeLambdaResourceschimeSdkRuleAllowEventRuletestEventBridgeLambdaResourcessummarizerLambdaDFA191205B673569": {
       "Properties": {
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "EventBridgeLambdaResourcesstartSummarizationLambda4D2E8088",
+            "EventBridgeLambdaResourcessummarizerLambdaBBC2E8AA",
             "Arn",
           ],
         },
@@ -470,7 +633,7 @@ exports[`Snapshot 1`] = `
           {
             "Arn": {
               "Fn::GetAtt": [
-                "EventBridgeLambdaResourcesstartSummarizationLambda4D2E8088",
+                "EventBridgeLambdaResourcessummarizerLambdaBBC2E8AA",
                 "Arn",
               ],
             },
@@ -480,16 +643,20 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::Events::Rule",
     },
-    "EventBridgeLambdaResourcesstartSummarizationLambda4D2E8088": {
+    "EventBridgeLambdaResourcessummarizerLambdaBBC2E8AA": {
       "DependsOn": [
-        "EventBridgeLambdaResourcesstartSummarizationRoleDefaultPolicy79AB70C8",
-        "EventBridgeLambdaResourcesstartSummarizationRoleF34A944A",
+        "EventBridgeLambdaResourcessummarizerLambdaRoleDefaultPolicyD78ABFCC",
+        "EventBridgeLambdaResourcessummarizerLambdaRole0F4AA4D4",
       ],
       "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
         "Code": {
-          "ImageUri": {
-            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:f51551448428e0c51fc738a594c77dc5818c16c50339d9a67b36f0f30c1b2cc6",
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
+          "S3Key": "25b44bc8634caa3e8efdc9328daa21b23a5e27e350ba48524a2186d73c8d68dd.zip",
         },
         "Environment": {
           "Variables": {
@@ -512,36 +679,73 @@ exports[`Snapshot 1`] = `
             "CONNECTION_TABLE": {
               "Ref": "DatabaseResourcesconnectionTable4B78CE15",
             },
-            "ENDPOINT_NAME": "deployed-cohere-gpt-medium",
             "KINESIS_DATA_STREAM": {
               "Ref": "KinesisResourceskinesisDataStream0EF13F28",
-            },
-            "LOG_LEVEL": "INFO",
-            "MODEL_NAME": "deployed-cohere-gpt-medium",
-            "MODEL_PACKAGE_ARN": "arn:aws:sagemaker:us-east-1:865070037744:model-package/cohere-gpt-medium-v1-5-15e34931a06235b7bac32dca396a970a",
-            "SAGEMAKER_ROLE": {
-              "Fn::GetAtt": [
-                "LambdaResourcessageMakerRole782EA4E6",
-                "Arn",
-              ],
             },
             "TRANSCRIBE_TABLE": {
               "Ref": "DatabaseResourcescallTableC5E68922",
             },
           },
         },
-        "PackageType": "Image",
+        "Handler": "index.handler",
         "Role": {
           "Fn::GetAtt": [
-            "EventBridgeLambdaResourcesstartSummarizationRoleF34A944A",
+            "EventBridgeLambdaResourcessummarizerLambdaRole0F4AA4D4",
             "Arn",
           ],
         },
-        "Timeout": 900,
+        "Runtime": "python3.11",
+        "Timeout": 60,
       },
       "Type": "AWS::Lambda::Function",
     },
-    "EventBridgeLambdaResourcesstartSummarizationRoleDefaultPolicy79AB70C8": {
+    "EventBridgeLambdaResourcessummarizerLambdaRole0F4AA4D4": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": "bedrock:InvokeModel",
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "sagemakerPolicy",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "EventBridgeLambdaResourcessummarizerLambdaRoleDefaultPolicyD78ABFCC": {
       "Properties": {
         "PolicyDocument": {
           "Statement": [
@@ -681,75 +885,14 @@ exports[`Snapshot 1`] = `
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "EventBridgeLambdaResourcesstartSummarizationRoleDefaultPolicy79AB70C8",
+        "PolicyName": "EventBridgeLambdaResourcessummarizerLambdaRoleDefaultPolicyD78ABFCC",
         "Roles": [
           {
-            "Ref": "EventBridgeLambdaResourcesstartSummarizationRoleF34A944A",
+            "Ref": "EventBridgeLambdaResourcessummarizerLambdaRole0F4AA4D4",
           },
         ],
       },
       "Type": "AWS::IAM::Policy",
-    },
-    "EventBridgeLambdaResourcesstartSummarizationRoleF34A944A": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-        "Policies": [
-          {
-            "PolicyDocument": {
-              "Statement": [
-                {
-                  "Action": "sagemaker:InvokeEndpoint",
-                  "Effect": "Allow",
-                  "Resource": {
-                    "Fn::Join": [
-                      "",
-                      [
-                        "arn:aws:sagemaker:",
-                        {
-                          "Ref": "AWS::Region",
-                        },
-                        ":",
-                        {
-                          "Ref": "AWS::AccountId",
-                        },
-                        ":endpoint/deployed-cohere-gpt-medium",
-                      ],
-                    ],
-                  },
-                },
-              ],
-              "Version": "2012-10-17",
-            },
-            "PolicyName": "sagemakerPolicy",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
     },
     "KinesisResourceskinesisDataStream0EF13F28": {
       "Properties": {
@@ -757,400 +900,6 @@ exports[`Snapshot 1`] = `
         "ShardCount": 1,
       },
       "Type": "AWS::Kinesis::Stream",
-    },
-    "LambdaResourcescontrolSageMakerLambda74DE8606": {
-      "DependsOn": [
-        "LambdaResourcescontrolSageMakerLambdaRole38C30052",
-      ],
-      "Properties": {
-        "Architectures": [
-          "arm64",
-        ],
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "a4f898f48c277a22dde5d400b50f3eb141c1d157cefc9773a8f399e7227cea0f.zip",
-        },
-        "Environment": {
-          "Variables": {
-            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-            "COHERE_INSTANCE_TYPE": "ml.g5.xlarge",
-            "ENDPOINT_NAME": "deployed-cohere-gpt-medium",
-            "LOG_LEVEL": "INFO",
-            "MODEL_NAME": "deployed-cohere-gpt-medium",
-            "MODEL_PACKAGE_ARN": "arn:aws:sagemaker:us-east-1:865070037744:model-package/cohere-gpt-medium-v1-5-15e34931a06235b7bac32dca396a970a",
-            "SAGEMAKER_ROLE": {
-              "Fn::GetAtt": [
-                "LambdaResourcessageMakerRole782EA4E6",
-                "Arn",
-              ],
-            },
-          },
-        },
-        "Handler": "index.handler",
-        "Role": {
-          "Fn::GetAtt": [
-            "LambdaResourcescontrolSageMakerLambdaRole38C30052",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 60,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "LambdaResourcescontrolSageMakerLambdaRole38C30052": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/AmazonSageMakerFullAccess",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "LambdaResourcessageMakerCustomResource14F40458": {
-      "DeletionPolicy": "Delete",
-      "Properties": {
-        "CreateOnStart": "false",
-        "ServiceToken": {
-          "Fn::GetAtt": [
-            "LambdaResourcessageMakerCustomResourceProviderframeworkonEvent0BAE79CE",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "AWS::CloudFormation::CustomResource",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "LambdaResourcessageMakerCustomResourceLambda31DBF15F": {
-      "DependsOn": [
-        "LambdaResourcescontrolSageMakerLambdaRole38C30052",
-      ],
-      "Properties": {
-        "Architectures": [
-          "arm64",
-        ],
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "2f609cb32375efb6965588c69e42476a6e3c19ab316ddf9f9b544de53f3f94f6.zip",
-        },
-        "Environment": {
-          "Variables": {
-            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-            "COHERE_INSTANCE_TYPE": "ml.g5.xlarge",
-            "ENDPOINT_NAME": "deployed-cohere-gpt-medium",
-            "LOG_LEVEL": "INFO",
-            "MODEL_NAME": "deployed-cohere-gpt-medium",
-            "MODEL_PACKAGE_ARN": "arn:aws:sagemaker:us-east-1:865070037744:model-package/cohere-gpt-medium-v1-5-15e34931a06235b7bac32dca396a970a",
-            "SAGEMAKER_ROLE": {
-              "Fn::GetAtt": [
-                "LambdaResourcessageMakerRole782EA4E6",
-                "Arn",
-              ],
-            },
-          },
-        },
-        "Handler": "index.handler",
-        "Role": {
-          "Fn::GetAtt": [
-            "LambdaResourcescontrolSageMakerLambdaRole38C30052",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 60,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "LambdaResourcessageMakerCustomResourceProviderframeworkonEvent0BAE79CE": {
-      "DependsOn": [
-        "LambdaResourcessageMakerCustomResourceRoleDefaultPolicy93AB4EF7",
-        "LambdaResourcessageMakerCustomResourceRoleFE703729",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
-        },
-        "Description": "AWS CDK resource provider framework - onEvent (test/LambdaResources/sageMakerCustomResourceProvider)",
-        "Environment": {
-          "Variables": {
-            "USER_ON_EVENT_FUNCTION_ARN": {
-              "Fn::GetAtt": [
-                "LambdaResourcessageMakerCustomResourceLambda31DBF15F",
-                "Arn",
-              ],
-            },
-          },
-        },
-        "Handler": "framework.onEvent",
-        "Role": {
-          "Fn::GetAtt": [
-            "LambdaResourcessageMakerCustomResourceRoleFE703729",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 900,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "LambdaResourcessageMakerCustomResourceProviderframeworkonEventLogRetentionFF1B7EB5": {
-      "Properties": {
-        "LogGroupName": {
-          "Fn::Join": [
-            "",
-            [
-              "/aws/lambda/",
-              {
-                "Ref": "LambdaResourcessageMakerCustomResourceProviderframeworkonEvent0BAE79CE",
-              },
-            ],
-          ],
-        },
-        "RetentionInDays": 7,
-        "ServiceToken": {
-          "Fn::GetAtt": [
-            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "Custom::LogRetention",
-    },
-    "LambdaResourcessageMakerCustomResourceRoleDefaultPolicy93AB4EF7": {
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": [
-                {
-                  "Fn::GetAtt": [
-                    "LambdaResourcessageMakerCustomResourceLambda31DBF15F",
-                    "Arn",
-                  ],
-                },
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      {
-                        "Fn::GetAtt": [
-                          "LambdaResourcessageMakerCustomResourceLambda31DBF15F",
-                          "Arn",
-                        ],
-                      },
-                      ":*",
-                    ],
-                  ],
-                },
-              ],
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "LambdaResourcessageMakerCustomResourceRoleDefaultPolicy93AB4EF7",
-        "Roles": [
-          {
-            "Ref": "LambdaResourcessageMakerCustomResourceRoleFE703729",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "LambdaResourcessageMakerCustomResourceRoleFE703729": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/AmazonSageMakerFullAccess",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "LambdaResourcessageMakerRole782EA4E6": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "sagemaker.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/AmazonSageMakerFullAccess",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": {
-      "DependsOn": [
-        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
-        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "5bc602ecde93c947efe5899ae355f999986a1acbe610b1c0b9c468d738857555.zip",
-        },
-        "Handler": "index.handler",
-        "Role": {
-          "Fn::GetAtt": [
-            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 900,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": {
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": [
-                "logs:PutRetentionPolicy",
-                "logs:DeleteRetentionPolicy",
-              ],
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
-        "Roles": [
-          {
-            "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
     },
     "MediaPipelineResourceskvsRoleEBA0BB3B": {
       "Properties": {
@@ -1340,149 +1089,12 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::IAM::Role",
     },
-    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEvent6A897300": {
-      "DependsOn": [
-        "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRoleDefaultPolicyEEDA4BC1",
-        "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRole19DEBB96",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
-        },
-        "Description": "AWS CDK resource provider framework - onEvent (test/MediaPipelineResources/transcribeConfiguration/mediaPipelinesInsightRequest/MediaPipelineResourceProvider)",
-        "Environment": {
-          "Variables": {
-            "USER_ON_EVENT_FUNCTION_ARN": {
-              "Fn::GetAtt": [
-                "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelinesFunction713F26AC",
-                "Arn",
-              ],
-            },
-          },
-        },
-        "Handler": "framework.onEvent",
-        "Role": {
-          "Fn::GetAtt": [
-            "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRole19DEBB96",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 900,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRole19DEBB96": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRoleDefaultPolicyEEDA4BC1": {
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": [
-                {
-                  "Fn::GetAtt": [
-                    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelinesFunction713F26AC",
-                    "Arn",
-                  ],
-                },
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      {
-                        "Fn::GetAtt": [
-                          "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelinesFunction713F26AC",
-                          "Arn",
-                        ],
-                      },
-                      ":*",
-                    ],
-                  ],
-                },
-              ],
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "transcribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRoleDefaultPolicyEEDA4BC1",
-        "Roles": [
-          {
-            "Ref": "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEventServiceRole19DEBB96",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelinesFunction713F26AC": {
-      "DependsOn": [
-        "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestmediaPipelineCustomResourceRole9F5992AF",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "2b483a8553fb212fa7cc1a84c621a540b640b1e3a27fa7946d9345aa37ff648c.zip",
-        },
-        "Description": "src/resources/media-pipelines/media-pipelines.lambda.ts",
-        "Environment": {
-          "Variables": {
-            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-          },
-        },
-        "Handler": "index.handler",
-        "Role": {
-          "Fn::GetAtt": [
-            "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestmediaPipelineCustomResourceRole9F5992AF",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 60,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
     "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestmediaPipelineCustomResourceD6E12EC3": {
       "DeletionPolicy": "Delete",
       "Properties": {
         "ServiceToken": {
           "Fn::GetAtt": [
-            "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestMediaPipelineResourceProviderframeworkonEvent6A897300",
+            "CustomMediaPipelineResourcesCustomResourceProviderHandler44D83AC9",
             "Arn",
           ],
         },
@@ -1520,108 +1132,21 @@ exports[`Snapshot 1`] = `
       "Type": "AWS::CloudFormation::CustomResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "MediaPipelineResourcestranscribeConfigurationmediaPipelinesInsightRequestmediaPipelineCustomResourceRole9F5992AF": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "Description": "Amazon Chime SDK Media Pipeline Resources",
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-        "Policies": [
-          {
-            "PolicyDocument": {
-              "Statement": [
-                {
-                  "Action": [
-                    "chime:*MediaInsightsPipelineConfiguration",
-                    "chime:ListVoiceConnectors",
-                    "chime:tagResource",
-                    "s3:ListBucket",
-                    "kinesis:DescribeStream",
-                    "logs:GetLogDelivery",
-                    "logs:DeleteLogDelivery",
-                    "logs:ListLogDeliveries",
-                    "logs:CreateLogGroup",
-                    "logs:DescribeResourcePolicies",
-                    "logs:PutResourcePolicy",
-                    "logs:DescribeLogGroups",
-                    "logs:CreateLogDelivery",
-                    "lambda:GetPolicy",
-                    "lambda:AddPermission",
-                    "iam:PutRolePolicy",
-                    "iam:CreateServiceLinkedRole",
-                    "iam:PassRole",
-                  ],
-                  "Effect": "Allow",
-                  "Resource": "*",
-                },
-                {
-                  "Action": [
-                    "ssm:PutParameter",
-                    "ssm:GetParameter",
-                    "ssm:DeleteParameter",
-                  ],
-                  "Effect": "Allow",
-                  "Resource": {
-                    "Fn::Join": [
-                      "",
-                      [
-                        "arn:aws:ssm:",
-                        {
-                          "Ref": "AWS::Region",
-                        },
-                        ":",
-                        {
-                          "Ref": "AWS::AccountId",
-                        },
-                        ":parameter/chime/*",
-                      ],
-                    ],
-                  },
-                },
-              ],
-              "Version": "2012-10-17",
-            },
-            "PolicyName": "chimePolicy",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
     "ServerResourcesEIPAssociationDEB797AD": {
       "Properties": {
-        "EIP": {
-          "Ref": "VPCResourcesserverEipA9C87125",
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "VPCResourcesserverEipA9C87125",
+            "AllocationId",
+          ],
         },
         "InstanceId": {
-          "Ref": "ServerResourcesInstance6D1E6643d362aeed0f8eaf03",
+          "Ref": "ServerResourcesInstance6D1E664304e934067efc5aaa",
         },
       },
       "Type": "AWS::EC2::EIPAssociation",
     },
-    "ServerResourcesInstance6D1E6643d362aeed0f8eaf03": {
+    "ServerResourcesInstance6D1E664304e934067efc5aaa": {
       "CreationPolicy": {
         "ResourceSignal": {
           "Count": 1,
@@ -2020,24 +1545,6 @@ systemctl restart nginx",
                       },
                       ".amazonaws.com/dev
 
-API_GATEWAY_URL=https://",
-                      {
-                        "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-                      },
-                      ".execute-api.",
-                      {
-                        "Ref": "AWS::Region",
-                      },
-                      ".",
-                      {
-                        "Ref": "AWS::URLSuffix",
-                      },
-                      "/",
-                      {
-                        "Ref": "apiGatewayResourcescontrolSageMakerApiDeploymentStageprodA10C7908",
-                      },
-                      "/
-
 PHONE_NUMBER=",
                       {
                         "Fn::GetAtt": [
@@ -2126,7 +1633,13 @@ PHONE_NUMBER=",
               [
                 "#!/bin/bash
 apt-get update
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+apt-get install -y ca-certificates curl gnupg
+while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do sleep 1 ; done
+mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+NODE_MAJOR=18
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+apt-get update
 while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do sleep 1 ; done
 apt-get install -y python3-pip unzip jq asterisk nodejs nginx
 while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do sleep 1 ; done
@@ -2153,7 +1666,8 @@ aws s3 cp s3://",
                 },
                 "/site /home/ubuntu/site --recursive
 usermod -a -G www-data ubuntu
-# fingerprint: bf01b60928f6da50
+echo Launch time: 10/24/2023, 4:34:23 PM
+# fingerprint: d5a8e1b0b110e99b
 (
   set +e
   /opt/aws/bin/cfn-init -v --region ",
@@ -2164,7 +1678,7 @@ usermod -a -G www-data ubuntu
                 {
                   "Ref": "AWS::StackName",
                 },
-                " --resource ServerResourcesInstance6D1E6643d362aeed0f8eaf03 --url https://cloudformation.",
+                " --resource ServerResourcesInstance6D1E664304e934067efc5aaa --url https://cloudformation.",
                 {
                   "Ref": "AWS::Region",
                 },
@@ -2185,7 +1699,7 @@ usermod -a -G www-data ubuntu
                 {
                   "Ref": "AWS::StackName",
                 },
-                " --resource ServerResourcesInstance6D1E6643d362aeed0f8eaf03 --url https://cloudformation.",
+                " --resource ServerResourcesInstance6D1E664304e934067efc5aaa --url https://cloudformation.",
                 {
                   "Ref": "AWS::Region",
                 },
@@ -2270,7 +1784,7 @@ usermod -a -G www-data ubuntu
       },
       "Type": "AWS::Lambda::LayerVersion",
     },
-    "ServerResourcesassetBucketDeploymentCustomResource513FD954": {
+    "ServerResourcesassetBucketDeploymentCustomResource512MiBBBA52578": {
       "DeletionPolicy": "Delete",
       "Properties": {
         "DestinationBucketName": {
@@ -2280,7 +1794,7 @@ usermod -a -G www-data ubuntu
         "RetainOnDelete": false,
         "ServiceToken": {
           "Fn::GetAtt": [
-            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiB6723FB92",
             "Arn",
           ],
         },
@@ -2290,7 +1804,7 @@ usermod -a -G www-data ubuntu
           },
         ],
         "SourceObjectKeys": [
-          "a93305793ef7f54e82d53b05dbef139c49797c867a9d06bf073ed1ddf4b5f15a.zip",
+          "4c44e1d0e94518d052e35e498341663b4595a3e0305a3b909769351bf8f9be45.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
@@ -2312,7 +1826,7 @@ usermod -a -G www-data ubuntu
             "Value": "true",
           },
           {
-            "Key": "aws-cdk:cr-owned:7a22f3a0",
+            "Key": "aws-cdk:cr-owned:c1cd23d1",
             "Value": "true",
           },
         ],
@@ -2426,7 +1940,6 @@ usermod -a -G www-data ubuntu
               "Action": [
                 "s3:GetObject*",
                 "s3:GetBucket*",
-                "s3:HeadObject",
                 "s3:List*",
                 "s3:DeleteObject*",
                 "s3:PutObject",
@@ -2498,7 +2011,7 @@ usermod -a -G www-data ubuntu
         "Targets": [
           {
             "Id": {
-              "Ref": "ServerResourcesInstance6D1E6643d362aeed0f8eaf03",
+              "Ref": "ServerResourcesInstance6D1E664304e934067efc5aaa",
             },
           },
         ],
@@ -2508,120 +2021,12 @@ usermod -a -G www-data ubuntu
       },
       "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
     },
-    "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEvent25770E78": {
-      "DependsOn": [
-        "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy75467F00",
-        "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRole592D736E",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
-        },
-        "Description": "AWS CDK resource provider framework - onEvent (test/VCResources/phoneNumber/ChimePhoneNumber/PSTNResourceProvider)",
-        "Environment": {
-          "Variables": {
-            "USER_ON_EVENT_FUNCTION_ARN": {
-              "Fn::GetAtt": [
-                "VCResourcesphoneNumberChimePhoneNumberpstnResourcesFunctionAC3E4525",
-                "Arn",
-              ],
-            },
-          },
-        },
-        "Handler": "framework.onEvent",
-        "Role": {
-          "Fn::GetAtt": [
-            "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRole592D736E",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 900,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRole592D736E": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy75467F00": {
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": [
-                {
-                  "Fn::GetAtt": [
-                    "VCResourcesphoneNumberChimePhoneNumberpstnResourcesFunctionAC3E4525",
-                    "Arn",
-                  ],
-                },
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      {
-                        "Fn::GetAtt": [
-                          "VCResourcesphoneNumberChimePhoneNumberpstnResourcesFunctionAC3E4525",
-                          "Arn",
-                        ],
-                      },
-                      ":*",
-                    ],
-                  ],
-                },
-              ],
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy75467F00",
-        "Roles": [
-          {
-            "Ref": "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEventServiceRole592D736E",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
     "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceDAB55159": {
       "DeletionPolicy": "Delete",
       "Properties": {
         "ServiceToken": {
           "Fn::GetAtt": [
-            "VCResourcesphoneNumberChimePhoneNumberPSTNResourceProviderframeworkonEvent25770E78",
+            "CustomPSTNResourcesCustomResourceProviderHandlerD046A72D",
             "Arn",
           ],
         },
@@ -2634,349 +2039,44 @@ usermod -a -G www-data ubuntu
         "resourceType": "PhoneNumber",
         "uid": "testVCResourcesphoneNumber5FF8813C",
       },
-      "Type": "AWS::CloudFormation::CustomResource",
+      "Type": "Custom::PSTNResources",
       "UpdateReplacePolicy": "Delete",
     },
-    "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceRole05044CE5": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "Description": "Amazon Chime PSTN Resources",
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-        "Policies": [
-          {
-            "PolicyDocument": {
-              "Statement": [
-                {
-                  "Action": [
-                    "chime:*VoiceProfileDomain*",
-                    "kms:CreateGrant",
-                    "kms:DescribeKey",
-                    "chime:*MediaInsightsPipelineConfiguration*",
-                    "chime:CreateSipRule",
-                    "chime:DeleteSipRule",
-                    "chime:UpdateSipRule",
-                    "chime:GetSipRule",
-                    "chime:CreateSipMediaApplication",
-                    "chime:DeleteSipMediaApplication",
-                    "chime:GetPhoneNumberOrder",
-                    "chime:SearchAvailablePhoneNumbers",
-                    "chime:CreatePhoneNumberOrder",
-                    "chime:DeletePhoneNumber",
-                    "chime:GetPhoneNumber",
-                    "chime:CreateVoiceConnector",
-                    "chime:PutVoiceConnectorStreamingConfiguration",
-                    "chime:PutVoiceConnectorTermination",
-                    "chime:PutVoiceConnectorOrigination",
-                    "chime:PutVoiceConnectorLoggingConfiguration",
-                    "chime:ListPhoneNumbers",
-                    "chime:AssociatePhoneNumbersWithVoiceConnector",
-                    "chime:DisassociatePhoneNumbersFromVoiceConnector",
-                    "chime:DeleteVoiceConnector",
-                    "chime:PutSipMediaApplicationAlexaSkillConfiguration",
-                    "chime:PutSipMediaApplicationLoggingConfiguration",
-                    "logs:GetLogDelivery",
-                    "logs:DeleteLogDelivery",
-                    "logs:ListLogDeliveries",
-                    "logs:CreateLogGroup",
-                    "logs:DescribeResourcePolicies",
-                    "logs:PutResourcePolicy",
-                    "logs:DescribeLogGroups",
-                    "logs:CreateLogDelivery",
-                    "lambda:GetPolicy",
-                    "lambda:AddPermission",
-                    "iam:PutRolePolicy",
-                    "iam:CreateServiceLinkedRole",
-                  ],
-                  "Effect": "Allow",
-                  "Resource": "*",
-                },
-                {
-                  "Action": [
-                    "ssm:PutParameter",
-                    "ssm:GetParameter",
-                    "ssm:DeleteParameter",
-                  ],
-                  "Effect": "Allow",
-                  "Resource": {
-                    "Fn::Join": [
-                      "",
-                      [
-                        "arn:aws:ssm:",
-                        {
-                          "Ref": "AWS::Region",
-                        },
-                        ":",
-                        {
-                          "Ref": "AWS::AccountId",
-                        },
-                        ":parameter/chime/*",
-                      ],
-                    ],
-                  },
-                },
-              ],
-              "Version": "2012-10-17",
-            },
-            "PolicyName": "chimePolicy",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "VCResourcesphoneNumberChimePhoneNumberpstnResourcesFunctionAC3E4525": {
-      "DependsOn": [
-        "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceRole05044CE5",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "713feb5b92242afc1a5123fde6ca3e7791ac5a6b86ae762a68a992048681f030.zip",
-        },
-        "Description": "src/resources/pstn/pstn.lambda.ts",
-        "Environment": {
-          "Variables": {
-            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-          },
-        },
-        "Handler": "index.handler",
-        "Role": {
-          "Fn::GetAtt": [
-            "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceRole05044CE5",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 60,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "VCResourcesphoneNumberphoneAssociation86AD31E9": {
+    "VCResourcesphoneNumberphoneAssociationpstnCustomResourceC02434DB": {
       "DeletionPolicy": "Delete",
-      "DependsOn": [
-        "VCResourcesphoneNumberphoneAssociationCustomResourcePolicy5AB33D78",
-      ],
       "Properties": {
-        "Create": {
-          "Fn::Join": [
-            "",
-            [
-              "{"service":"Chime","action":"associatePhoneNumbersWithVoiceConnector","region":"us-east-1","parameters":{"E164PhoneNumbers":["",
-              {
-                "Fn::GetAtt": [
-                  "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceDAB55159",
-                  "phoneNumber",
-                ],
-              },
-              ""],"VoiceConnectorId":"",
-              {
-                "Fn::GetAtt": [
-                  "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResource008AEA05",
-                  "voiceConnectorId",
-                ],
-              },
-              "","ForceAssociate":true},"physicalResourceId":{"id":"testVCResourcesphoneNumberphoneAssociation935FC5E9"}}",
-            ],
-          ],
-        },
-        "Delete": {
-          "Fn::Join": [
-            "",
-            [
-              "{"service":"Chime","action":"disassociatePhoneNumbersFromVoiceConnector","region":"us-east-1","parameters":{"E164PhoneNumbers":["",
-              {
-                "Fn::GetAtt": [
-                  "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceDAB55159",
-                  "phoneNumber",
-                ],
-              },
-              ""],"VoiceConnectorId":"",
-              {
-                "Fn::GetAtt": [
-                  "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResource008AEA05",
-                  "voiceConnectorId",
-                ],
-              },
-              ""},"physicalResourceId":{"id":"testVCResourcesphoneNumberphoneAssociation935FC5E9"}}",
-            ],
-          ],
-        },
-        "InstallLatestAwsSdk": true,
         "ServiceToken": {
           "Fn::GetAtt": [
-            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "CustomPSTNResourcesCustomResourceProviderHandlerD046A72D",
             "Arn",
           ],
         },
-      },
-      "Type": "Custom::AWS",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "VCResourcesphoneNumberphoneAssociationCustomResourcePolicy5AB33D78": {
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": "chime:AssociatePhoneNumbersWithVoiceConnector",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            {
-              "Action": "chime:DisassociatePhoneNumbersFromVoiceConnector",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "VCResourcesphoneNumberphoneAssociationCustomResourcePolicy5AB33D78",
-        "Roles": [
-          {
-            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventDCF379A6": {
-      "DependsOn": [
-        "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy3E381DC7",
-        "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRole71DBE2D0",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
-        },
-        "Description": "AWS CDK resource provider framework - onEvent (test/VCResources/voiceConnector/voiceConnectorRequest/PSTNResourceProvider)",
-        "Environment": {
-          "Variables": {
-            "USER_ON_EVENT_FUNCTION_ARN": {
-              "Fn::GetAtt": [
-                "VCResourcesvoiceConnectorvoiceConnectorRequestpstnResourcesFunction22B91A5E",
-                "Arn",
-              ],
-            },
-          },
-        },
-        "Handler": "framework.onEvent",
-        "Role": {
-          "Fn::GetAtt": [
-            "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRole71DBE2D0",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 900,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRole71DBE2D0": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
+        "properties": {
+          "e164PhoneNumber": {
+            "Fn::GetAtt": [
+              "VCResourcesphoneNumberChimePhoneNumberpstnCustomResourceDAB55159",
+              "phoneNumber",
             ],
           },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy3E381DC7": {
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": [
-                {
-                  "Fn::GetAtt": [
-                    "VCResourcesvoiceConnectorvoiceConnectorRequestpstnResourcesFunction22B91A5E",
-                    "Arn",
-                  ],
-                },
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      {
-                        "Fn::GetAtt": [
-                          "VCResourcesvoiceConnectorvoiceConnectorRequestpstnResourcesFunction22B91A5E",
-                          "Arn",
-                        ],
-                      },
-                      ":*",
-                    ],
-                  ],
-                },
-              ],
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRoleDefaultPolicy3E381DC7",
-        "Roles": [
-          {
-            "Ref": "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventServiceRole71DBE2D0",
+          "voiceConnectorId": {
+            "Fn::GetAtt": [
+              "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResource008AEA05",
+              "voiceConnectorId",
+            ],
           },
-        ],
+        },
+        "resourceType": "PhoneAssociation",
+        "uid": "testVCResourcesphoneNumber5FF8813C",
       },
-      "Type": "AWS::IAM::Policy",
+      "Type": "Custom::PSTNResources",
+      "UpdateReplacePolicy": "Delete",
     },
     "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResource008AEA05": {
       "DeletionPolicy": "Delete",
       "Properties": {
         "ServiceToken": {
           "Fn::GetAtt": [
-            "VCResourcesvoiceConnectorvoiceConnectorRequestPSTNResourceProviderframeworkonEventDCF379A6",
+            "CustomPSTNResourcesCustomResourceProviderHandlerD046A72D",
             "Arn",
           ],
         },
@@ -3014,147 +2114,8 @@ usermod -a -G www-data ubuntu
         "resourceType": "VoiceConnector",
         "uid": "testVCResourcesvoiceConnector7C89A135",
       },
-      "Type": "AWS::CloudFormation::CustomResource",
+      "Type": "Custom::PSTNResources",
       "UpdateReplacePolicy": "Delete",
-    },
-    "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResourceRole8D097508": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "Description": "Amazon Chime PSTN Resources",
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-        "Policies": [
-          {
-            "PolicyDocument": {
-              "Statement": [
-                {
-                  "Action": [
-                    "chime:*VoiceProfileDomain*",
-                    "kms:CreateGrant",
-                    "kms:DescribeKey",
-                    "chime:*MediaInsightsPipelineConfiguration*",
-                    "chime:CreateSipRule",
-                    "chime:DeleteSipRule",
-                    "chime:UpdateSipRule",
-                    "chime:GetSipRule",
-                    "chime:CreateSipMediaApplication",
-                    "chime:DeleteSipMediaApplication",
-                    "chime:GetPhoneNumberOrder",
-                    "chime:SearchAvailablePhoneNumbers",
-                    "chime:CreatePhoneNumberOrder",
-                    "chime:DeletePhoneNumber",
-                    "chime:GetPhoneNumber",
-                    "chime:CreateVoiceConnector",
-                    "chime:PutVoiceConnectorStreamingConfiguration",
-                    "chime:PutVoiceConnectorTermination",
-                    "chime:PutVoiceConnectorOrigination",
-                    "chime:PutVoiceConnectorLoggingConfiguration",
-                    "chime:ListPhoneNumbers",
-                    "chime:AssociatePhoneNumbersWithVoiceConnector",
-                    "chime:DisassociatePhoneNumbersFromVoiceConnector",
-                    "chime:DeleteVoiceConnector",
-                    "chime:PutSipMediaApplicationAlexaSkillConfiguration",
-                    "chime:PutSipMediaApplicationLoggingConfiguration",
-                    "logs:GetLogDelivery",
-                    "logs:DeleteLogDelivery",
-                    "logs:ListLogDeliveries",
-                    "logs:CreateLogGroup",
-                    "logs:DescribeResourcePolicies",
-                    "logs:PutResourcePolicy",
-                    "logs:DescribeLogGroups",
-                    "logs:CreateLogDelivery",
-                    "lambda:GetPolicy",
-                    "lambda:AddPermission",
-                    "iam:PutRolePolicy",
-                    "iam:CreateServiceLinkedRole",
-                  ],
-                  "Effect": "Allow",
-                  "Resource": "*",
-                },
-                {
-                  "Action": [
-                    "ssm:PutParameter",
-                    "ssm:GetParameter",
-                    "ssm:DeleteParameter",
-                  ],
-                  "Effect": "Allow",
-                  "Resource": {
-                    "Fn::Join": [
-                      "",
-                      [
-                        "arn:aws:ssm:",
-                        {
-                          "Ref": "AWS::Region",
-                        },
-                        ":",
-                        {
-                          "Ref": "AWS::AccountId",
-                        },
-                        ":parameter/chime/*",
-                      ],
-                    ],
-                  },
-                },
-              ],
-              "Version": "2012-10-17",
-            },
-            "PolicyName": "chimePolicy",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "VCResourcesvoiceConnectorvoiceConnectorRequestpstnResourcesFunction22B91A5E": {
-      "DependsOn": [
-        "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResourceRole8D097508",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "713feb5b92242afc1a5123fde6ca3e7791ac5a6b86ae762a68a992048681f030.zip",
-        },
-        "Description": "src/resources/pstn/pstn.lambda.ts",
-        "Environment": {
-          "Variables": {
-            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-          },
-        },
-        "Handler": "index.handler",
-        "Role": {
-          "Fn::GetAtt": [
-            "VCResourcesvoiceConnectorvoiceConnectorRequestpstnCustomResourceRole8D097508",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs18.x",
-        "Timeout": 60,
-      },
-      "Type": "AWS::Lambda::Function",
     },
     "VPCResourcesALBSecurityGroupBA6016ED": {
       "Properties": {
@@ -3537,324 +2498,6 @@ usermod -a -G www-data ubuntu
     },
     "VPCResourcesserverEipA9C87125": {
       "Type": "AWS::EC2::EIP",
-    },
-    "apiGatewayResourcescontrolSageMakerApi98F79DA1": {
-      "Properties": {
-        "EndpointConfiguration": {
-          "Types": [
-            "REGIONAL",
-          ],
-        },
-        "Name": "controlSageMakerApi",
-      },
-      "Type": "AWS::ApiGateway::RestApi",
-    },
-    "apiGatewayResourcescontrolSageMakerApiAccount4CDD6528": {
-      "DeletionPolicy": "Retain",
-      "DependsOn": [
-        "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-      ],
-      "Properties": {
-        "CloudWatchRoleArn": {
-          "Fn::GetAtt": [
-            "apiGatewayResourcescontrolSageMakerApiCloudWatchRoleBDFE07B1",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "AWS::ApiGateway::Account",
-      "UpdateReplacePolicy": "Retain",
-    },
-    "apiGatewayResourcescontrolSageMakerApiCloudWatchRoleBDFE07B1": {
-      "DeletionPolicy": "Retain",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "apigateway.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-      "UpdateReplacePolicy": "Retain",
-    },
-    "apiGatewayResourcescontrolSageMakerApiDeploymentECFDAA7C4231dfa1b0b706c43add0c1d411ab523": {
-      "DependsOn": [
-        "apiGatewayResourcescontrolSageMakerApiactionOPTIONS88DCF1D5",
-        "apiGatewayResourcescontrolSageMakerApiactionPOST8AEE53B8",
-        "apiGatewayResourcescontrolSageMakerApiaction6763D836",
-        "apiGatewayResourcescontrolSageMakerApiOPTIONS8FD4C926",
-      ],
-      "Properties": {
-        "Description": "Automatically created by the RestApi construct",
-        "RestApiId": {
-          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-        },
-      },
-      "Type": "AWS::ApiGateway::Deployment",
-    },
-    "apiGatewayResourcescontrolSageMakerApiDeploymentStageprodA10C7908": {
-      "DependsOn": [
-        "apiGatewayResourcescontrolSageMakerApiAccount4CDD6528",
-      ],
-      "Properties": {
-        "DeploymentId": {
-          "Ref": "apiGatewayResourcescontrolSageMakerApiDeploymentECFDAA7C4231dfa1b0b706c43add0c1d411ab523",
-        },
-        "MethodSettings": [
-          {
-            "DataTraceEnabled": true,
-            "HttpMethod": "*",
-            "LoggingLevel": "INFO",
-            "ResourcePath": "/*",
-          },
-        ],
-        "RestApiId": {
-          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-        },
-        "StageName": "prod",
-      },
-      "Type": "AWS::ApiGateway::Stage",
-    },
-    "apiGatewayResourcescontrolSageMakerApiOPTIONS8FD4C926": {
-      "Properties": {
-        "ApiKeyRequired": false,
-        "AuthorizationType": "NONE",
-        "HttpMethod": "OPTIONS",
-        "Integration": {
-          "IntegrationResponses": [
-            {
-              "ResponseParameters": {
-                "method.response.header.Access-Control-Allow-Credentials": "'true'",
-                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
-                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
-                "method.response.header.Access-Control-Allow-Origin": "'*'",
-              },
-              "StatusCode": "204",
-            },
-          ],
-          "RequestTemplates": {
-            "application/json": "{ statusCode: 200 }",
-          },
-          "Type": "MOCK",
-        },
-        "MethodResponses": [
-          {
-            "ResponseParameters": {
-              "method.response.header.Access-Control-Allow-Credentials": true,
-              "method.response.header.Access-Control-Allow-Headers": true,
-              "method.response.header.Access-Control-Allow-Methods": true,
-              "method.response.header.Access-Control-Allow-Origin": true,
-            },
-            "StatusCode": "204",
-          },
-        ],
-        "ResourceId": {
-          "Fn::GetAtt": [
-            "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-            "RootResourceId",
-          ],
-        },
-        "RestApiId": {
-          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-        },
-      },
-      "Type": "AWS::ApiGateway::Method",
-    },
-    "apiGatewayResourcescontrolSageMakerApiaction6763D836": {
-      "Properties": {
-        "ParentId": {
-          "Fn::GetAtt": [
-            "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-            "RootResourceId",
-          ],
-        },
-        "PathPart": "action",
-        "RestApiId": {
-          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-        },
-      },
-      "Type": "AWS::ApiGateway::Resource",
-    },
-    "apiGatewayResourcescontrolSageMakerApiactionOPTIONS88DCF1D5": {
-      "Properties": {
-        "ApiKeyRequired": false,
-        "AuthorizationType": "NONE",
-        "HttpMethod": "OPTIONS",
-        "Integration": {
-          "IntegrationResponses": [
-            {
-              "ResponseParameters": {
-                "method.response.header.Access-Control-Allow-Credentials": "'true'",
-                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
-                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
-                "method.response.header.Access-Control-Allow-Origin": "'*'",
-              },
-              "StatusCode": "204",
-            },
-          ],
-          "RequestTemplates": {
-            "application/json": "{ statusCode: 200 }",
-          },
-          "Type": "MOCK",
-        },
-        "MethodResponses": [
-          {
-            "ResponseParameters": {
-              "method.response.header.Access-Control-Allow-Credentials": true,
-              "method.response.header.Access-Control-Allow-Headers": true,
-              "method.response.header.Access-Control-Allow-Methods": true,
-              "method.response.header.Access-Control-Allow-Origin": true,
-            },
-            "StatusCode": "204",
-          },
-        ],
-        "ResourceId": {
-          "Ref": "apiGatewayResourcescontrolSageMakerApiaction6763D836",
-        },
-        "RestApiId": {
-          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-        },
-      },
-      "Type": "AWS::ApiGateway::Method",
-    },
-    "apiGatewayResourcescontrolSageMakerApiactionPOST8AEE53B8": {
-      "Properties": {
-        "AuthorizationType": "NONE",
-        "HttpMethod": "POST",
-        "Integration": {
-          "IntegrationHttpMethod": "POST",
-          "Type": "AWS_PROXY",
-          "Uri": {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":apigateway:",
-                {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
-                {
-                  "Fn::GetAtt": [
-                    "LambdaResourcescontrolSageMakerLambda74DE8606",
-                    "Arn",
-                  ],
-                },
-                "/invocations",
-              ],
-            ],
-          },
-        },
-        "ResourceId": {
-          "Ref": "apiGatewayResourcescontrolSageMakerApiaction6763D836",
-        },
-        "RestApiId": {
-          "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-        },
-      },
-      "Type": "AWS::ApiGateway::Method",
-    },
-    "apiGatewayResourcescontrolSageMakerApiactionPOSTApiPermissionTesttestapiGatewayResourcescontrolSageMakerApiBD332A0FPOSTaction225962B5": {
-      "Properties": {
-        "Action": "lambda:InvokeFunction",
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "LambdaResourcescontrolSageMakerLambda74DE8606",
-            "Arn",
-          ],
-        },
-        "Principal": "apigateway.amazonaws.com",
-        "SourceArn": {
-          "Fn::Join": [
-            "",
-            [
-              "arn:",
-              {
-                "Ref": "AWS::Partition",
-              },
-              ":execute-api:",
-              {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
-              {
-                "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-              },
-              "/test-invoke-stage/POST/action",
-            ],
-          ],
-        },
-      },
-      "Type": "AWS::Lambda::Permission",
-    },
-    "apiGatewayResourcescontrolSageMakerApiactionPOSTApiPermissiontestapiGatewayResourcescontrolSageMakerApiBD332A0FPOSTactionFE187854": {
-      "Properties": {
-        "Action": "lambda:InvokeFunction",
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "LambdaResourcescontrolSageMakerLambda74DE8606",
-            "Arn",
-          ],
-        },
-        "Principal": "apigateway.amazonaws.com",
-        "SourceArn": {
-          "Fn::Join": [
-            "",
-            [
-              "arn:",
-              {
-                "Ref": "AWS::Partition",
-              },
-              ":execute-api:",
-              {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
-              {
-                "Ref": "apiGatewayResourcescontrolSageMakerApi98F79DA1",
-              },
-              "/",
-              {
-                "Ref": "apiGatewayResourcescontrolSageMakerApiDeploymentStageprodA10C7908",
-              },
-              "/POST/action",
-            ],
-          ],
-        },
-      },
-      "Type": "AWS::Lambda::Permission",
     },
     "apiGatewayResourceseventSourceMapping96A1724F": {
       "Properties": {

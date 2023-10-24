@@ -2,12 +2,6 @@
 import { WebSocketApi, WebSocketStage } from '@aws-cdk/aws-apigatewayv2-alpha';
 import { WebSocketLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations-alpha';
 import { Duration } from 'aws-cdk-lib';
-import {
-  RestApi,
-  LambdaIntegration,
-  EndpointType,
-  MethodLoggingLevel,
-} from 'aws-cdk-lib/aws-apigateway';
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ManagedPolicy, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { Stream } from 'aws-cdk-lib/aws-kinesis';
@@ -17,7 +11,6 @@ import {
   Architecture,
   EventSourceMapping,
   StartingPosition,
-  IFunction,
 } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
@@ -27,14 +20,12 @@ interface ApiGatewayResourcesProps {
   connectionTable: Table;
   transcribeTable: Table;
   logLevel: string;
-  controlSageMakerLambda: IFunction;
 }
 
 export class ApiGatewayResources extends Construct {
   public kdsConsumerLambda: Function;
   public webSocketApi: WebSocketApi;
   public webSocketStage: WebSocketStage;
-  public controlSageMakerApi: RestApi;
 
   constructor(scope: Construct, id: string, props: ApiGatewayResourcesProps) {
     super(scope, id);
@@ -105,37 +96,5 @@ export class ApiGatewayResources extends Construct {
 
     this.webSocketStage.grantManagementApiAccess(this.kdsConsumerLambda);
     this.webSocketApi.grantManageConnections(this.kdsConsumerLambda);
-
-    const api = new RestApi(this, 'controlSageMakerApi', {
-      restApiName: 'controlSageMakerApi',
-      defaultCorsPreflightOptions: {
-        allowHeaders: [
-          'Content-Type',
-          'X-Amz-Date',
-          'Authorization',
-          'X-Api-Key',
-        ],
-        allowMethods: ['OPTIONS', 'POST'],
-        allowCredentials: true,
-        allowOrigins: ['*'],
-      },
-      deployOptions: {
-        loggingLevel: MethodLoggingLevel.INFO,
-        dataTraceEnabled: true,
-      },
-      endpointConfiguration: {
-        types: [EndpointType.REGIONAL],
-      },
-    });
-
-    const action = api.root.addResource('action');
-
-    const actionIntegration = new LambdaIntegration(
-      props.controlSageMakerLambda,
-    );
-
-    action.addMethod('POST', actionIntegration, {});
-
-    this.controlSageMakerApi = api;
   }
 }

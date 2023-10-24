@@ -3,7 +3,6 @@ import os
 import json
 import boto3
 from botocore.exceptions import ClientError
-from cohere_sagemaker import Client
 from boto3.dynamodb.types import TypeDeserializer
 
 logger = logging.getLogger()
@@ -18,37 +17,62 @@ logger.setLevel(LOG_LEVEL)
 try:
     SUMMARY_QUESTION = os.environ['SUMMARY_QUESTION']
 except BaseException:
-    SUMMARY_QUESTION = "What is the customer calling about and what are the next steps?"
-ENDPOINT_NAME = os.environ['ENDPOINT_NAME']
-MODEL_PACKAGE_ARN = os.environ['MODEL_PACKAGE_ARN']
-MODEL_NAME = os.environ['MODEL_NAME']
-SAGEMAKER_ROLE = os.environ['SAGEMAKER_ROLE']
+    SUMMARY_QUESTION = "In a few sentences, tell me what the customer is calling about and what the next steps are."
+
 KINESIS_DATA_STREAM = os.environ['KINESIS_DATA_STREAM']
 API_GATEWAY_ENDPOINT = os.environ['API_GATEWAY_ENDPOINT']
 CONNECTION_TABLE = os.environ['CONNECTION_TABLE']
+TRANSCRIBE_TABLE = os.environ['TRANSCRIBE_TABLE']
+MODEL_ID = 'anthropic.claude-instant-v1'
 
 dynamodb = boto3.client('dynamodb', region_name='us-east-1')
 kinesis = boto3.client('kinesis')
 api_gateway = boto3.client("apigatewaymanagementapi", endpoint_url=API_GATEWAY_ENDPOINT)
+bedrock_runtime = boto3.client('bedrock-runtime')
 deserializer = TypeDeserializer()
-co = Client(endpoint_name=ENDPOINT_NAME)
 
 
 def create_prompt(conversation):
-    return f'{conversation}\n\n{SUMMARY_QUESTION}'
+    return f'\n\n \
+    Human: This is a conversation between two people, a caller and an agent.\n\n \
+    {conversation}\n\n \
+    {SUMMARY_QUESTION}\n\n \
+    Assistant:'
 
 
 def get_response(prompt):
-    cohere_response = co.generate(prompt=prompt, max_tokens=200, temperature=0, return_likelihoods='GENERATION')
-    cohere_text = cohere_response.generations[0].text
-    cohere_text = '.'.join(cohere_text.split('.')[:-1]) + '.'
-    return cohere_text
+
+    body = json.dumps({
+        "prompt": prompt,
+        "temperature": 0,
+        "max_tokens_to_sample": 4000,
+    })
+
+    try:
+        bedrock_response = bedrock_runtime.invoke_model(
+            body=body,
+            modelId=MODEL_ID
+        )
+        logger.info("%s Bedrock Response: %s", LOG_PREFIX, bedrock_response)
+        response_body = json.loads(bedrock_response.get("body").read())
+        return response_body.get("completion")
+
+    except ClientError as error:
+
+        if error.response['Error']['Code'] == 'AccessDeniedException':
+            print(f"\x1b[41m{error.response['Error']['Message']}\
+                    \nTo troubeshoot this issue please refer to the following resources.\
+                    \nhttps://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html\
+                    \nhttps://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html\x1b[0m\n")
+
+        else:
+            raise error
 
 
-def write_to_websocket(cohere_response):
-    logger.info('%s Writing to websocket: %s', LOG_PREFIX, cohere_response)
+def write_to_websocket(bedrock_response):
+    logger.info('%s Writing to websocket', LOG_PREFIX)
     payload = {
-        'summarization': cohere_response
+        'summarization': bedrock_response
     }
     payload_json = json.dumps(payload)
     connections = dynamodb.scan(TableName=CONNECTION_TABLE)
@@ -82,7 +106,7 @@ def handler(event, context):
         transaction_id = event['detail']['transactionId']
 
         params = {
-            'TableName': os.getenv('TRANSCRIBE_TABLE'),
+            'TableName': TRANSCRIBE_TABLE,
             'FilterExpression': '#tid = :tid',
             'ExpressionAttributeNames': {
                 '#tid': 'transactionId',
@@ -113,11 +137,8 @@ def handler(event, context):
         logger.info('%s Conversation: %s', LOG_PREFIX, conversation)
         prompt = create_prompt(conversation)
         logger.info('%s Prompt: %s', LOG_PREFIX, prompt)
-        cohere_response = get_response(prompt)
-
-        logger.info('%s Cohere Response: %s', LOG_PREFIX, cohere_response)
-
-        write_to_websocket(cohere_response)
+        bedrock_response = get_response(prompt)
+        write_to_websocket(bedrock_response)
 
     return {
         'statusCode': 200,

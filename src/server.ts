@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { WebSocketApi, WebSocketStage } from '@aws-cdk/aws-apigatewayv2-alpha';
-import { RemovalPolicy, Duration, Stack } from 'aws-cdk-lib';
-import { RestApi } from 'aws-cdk-lib/aws-apigateway';
+import { RemovalPolicy, Duration, Stack, IgnoreMode } from 'aws-cdk-lib';
 import {
   Vpc,
   SecurityGroup,
@@ -54,7 +53,6 @@ interface ServerProps {
   webSocketStage: WebSocketStage;
   albSecurityGroup: SecurityGroup;
   applicationLoadBalancer: ApplicationLoadBalancer;
-  controlSageMakerApi: RestApi;
 }
 
 export class ServerResources extends Construct {
@@ -71,11 +69,16 @@ export class ServerResources extends Construct {
     });
 
     new BucketDeployment(this, 'assetBucketDeployment', {
-      sources: [Source.asset('src/resources/server/assets')],
+      sources: [
+        Source.asset('src/resources/server/assets', {
+          exclude: ['**/node_modules/**', '**/dist/**'],
+          ignoreMode: IgnoreMode.GIT,
+        }),
+      ],
       destinationBucket: assetBucket,
       retainOnDelete: false,
+      memoryLimit: 512,
     });
-
     const serverRole = new Role(this, 'serverEc2Role', {
       assumedBy: new ServicePrincipal('ec2.amazonaws.com'),
       inlinePolicies: {
@@ -108,7 +111,13 @@ export class ServerResources extends Construct {
     const userData = UserData.forLinux();
     userData.addCommands(
       'apt-get update',
-      'curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -',
+      'apt-get install -y ca-certificates curl gnupg',
+      'while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do sleep 1 ; done',
+      'mkdir -p /etc/apt/keyrings',
+      'curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg',
+      'NODE_MAJOR=18',
+      'echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list',
+      'apt-get update',
       'while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do sleep 1 ; done',
       'apt-get install -y python3-pip unzip jq asterisk nodejs nginx',
       'while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do sleep 1 ; done',
@@ -131,6 +140,7 @@ export class ServerResources extends Construct {
         assetBucket.bucketName +
         '/site /home/ubuntu/site --recursive',
       'usermod -a -G www-data ubuntu',
+      'echo Launch time: ' + new Date().toLocaleString(),
     );
 
     const ec2Instance = new Instance(this, 'Instance', {
@@ -192,8 +202,6 @@ export class ServerResources extends Construct {
                 Stack.of(this).region
               }.amazonaws.com/${
                 props.webSocketStage.stageName
-              }\n\rAPI_GATEWAY_URL=${
-                props.controlSageMakerApi.url
               }\n\rPHONE_NUMBER=${props.phoneNumber.phoneNumber}`,
             ),
             InitCommand.shellCommand('chmod +x /etc/config_asterisk.sh'),
@@ -239,7 +247,7 @@ export class ServerResources extends Construct {
     ec2Instance.addSecurityGroup(props.sshSecurityGroup);
 
     new CfnEIPAssociation(this, 'EIP Association', {
-      eip: props.serverEip.ref,
+      allocationId: props.serverEip.attrAllocationId,
       instanceId: ec2Instance.instanceId,
     });
 

@@ -9,10 +9,10 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   defaultReleaseBranch: 'main',
   name: 'amazon-chime-sdk-call-analytics-real-time-summarizer',
   license: 'MIT-0',
+  projenrcTs: true,
   author: 'Court Schuett',
   copyrightOwner: 'Amazon.com, Inc.',
   authorAddress: 'https://aws.amazon.com',
-  defaultReleaseBranch: 'main',
   appEntrypoint: 'amazon-chime-sdk-call-analytics-real-time-summarizer.ts',
   eslintOptions: { ignorePatterns: ['src/resources/server/assets/site/**'] },
   depsUpgradeOptions: {
@@ -40,7 +40,6 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   ],
   autoApproveUpgrades: true,
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
-  defaultReleaseBranch: 'main',
 });
 
 const common_exclude = [
@@ -50,6 +49,8 @@ const common_exclude = [
   'yarn-error.log',
   'dependabot.yml',
   '.DS_Store',
+  '.venv',
+  '.env',
 ];
 
 const upgradeSite = project.github.addWorkflow('upgrade-site');
@@ -89,6 +90,60 @@ upgradeSite.addJobs({
           'branch': 'auto/projen-upgrade',
           'title': 'chore: upgrade site',
           'body': 'This PR upgrades site',
+          'labels': 'auto-merge, auto-approve',
+          'author': 'github-actions <github-actions@github.com>',
+          'committer': 'github-actions <github-actions@github.com>',
+          'signoff': true,
+        },
+      },
+    ],
+  },
+});
+
+const upgradePython = project.github.addWorkflow('upgrade-python');
+upgradePython.on({ schedule: [{ cron: '0 5 * * 1' }], workflowDispatch: {} });
+upgradePython.addJobs({
+  upgradeSite: {
+    runsOn: ['ubuntu-latest'],
+    name: 'upgrade-python',
+    permissions: {
+      actions: JobPermission.WRITE,
+      contents: JobPermission.READ,
+      idToken: JobPermission.WRITE,
+    },
+    steps: [
+      { uses: 'actions/checkout@v3' },
+      {
+        name: 'Setup Python',
+        uses: 'actions/setup-python@v4',
+        with: {
+          'python-version': '3.11',
+        },
+      },
+      {
+        uses: 'snok/install-poetry@v1',
+      },
+      {
+        run: 'poetry install',
+        workingDirectory: 'src/resources/summarizer',
+      },
+      {
+        run: 'poetry update',
+        workingDirectory: 'src/resources/summarizer',
+      },
+      {
+        run: 'pip freeze > requirements.txt',
+        workingDirectory: 'src/resources/summarizer',
+      },
+      {
+        name: 'Create Pull Request',
+        uses: 'peter-evans/create-pull-request@v4',
+        with: {
+          'token': '${{ secrets.' + AUTOMATION_TOKEN + ' }}',
+          'commit-message': 'chore: upgrade python',
+          'branch': 'auto/projen-upgrade',
+          'title': 'chore: upgrade python',
+          'body': 'This PR upgrades python',
           'labels': 'auto-merge, auto-approve',
           'author': 'github-actions <github-actions@github.com>',
           'committer': 'github-actions <github-actions@github.com>',
