@@ -1804,7 +1804,7 @@ echo Launch time: 10/30/2023, 5:48:27 PM
           },
         ],
         "SourceObjectKeys": [
-          "4c44e1d0e94518d052e35e498341663b4595a3e0305a3b909769351bf8f9be45.zip",
+          "8532278ba76eb8680e596aa05815a860b04e276b19210eb2daeda657d300cec3.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
