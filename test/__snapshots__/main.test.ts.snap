@@ -210,7 +210,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "d2507d8aaca6cf53a288783f9b77a71c475b20dbdcbcc9f01b1e3dc4e5553e4f.zip",
+          "S3Key": "37e9a914cedd009b21f91444c6bb22ef8ac358b57580ede668287d9d19cf1d88.zip",
         },
         "Handler": "__entrypoint__.handler",
         "MemorySize": 128,
@@ -322,7 +322,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "4e1c22bfc3a8c9768d5a168814ab721614b22249283525e4b079d7b923a0442b.zip",
+          "S3Key": "7788f49e4cc8e515bce42a49e3e1634fcd35585d9306b6f598fb6724655a71ff.zip",
         },
         "Handler": "__entrypoint__.handler",
         "MemorySize": 128,
@@ -1141,12 +1141,12 @@ exports[`Snapshot 1`] = `
           ],
         },
         "InstanceId": {
-          "Ref": "ServerResourcesInstance6D1E66435e65ca2c2fe86904",
+          "Ref": "ServerResourcesInstance6D1E66434078be39a1188ed5",
         },
       },
       "Type": "AWS::EC2::EIPAssociation",
     },
-    "ServerResourcesInstance6D1E66435e65ca2c2fe86904": {
+    "ServerResourcesInstance6D1E66434078be39a1188ed5": {
       "CreationPolicy": {
         "ResourceSignal": {
           "Count": 1,
@@ -1666,7 +1666,7 @@ aws s3 cp s3://",
                 },
                 "/site /home/ubuntu/site --recursive
 usermod -a -G www-data ubuntu
-echo Launch time: 10/30/2023, 5:47:46 PM
+echo Launch time: 10/30/2023, 5:48:27 PM
 # fingerprint: d5a8e1b0b110e99b
 (
   set +e
@@ -1678,7 +1678,7 @@ echo Launch time: 10/30/2023, 5:47:46 PM
                 {
                   "Ref": "AWS::StackName",
                 },
-                " --resource ServerResourcesInstance6D1E66435e65ca2c2fe86904 --url https://cloudformation.",
+                " --resource ServerResourcesInstance6D1E66434078be39a1188ed5 --url https://cloudformation.",
                 {
                   "Ref": "AWS::Region",
                 },
@@ -1699,7 +1699,7 @@ echo Launch time: 10/30/2023, 5:47:46 PM
                 {
                   "Ref": "AWS::StackName",
                 },
-                " --resource ServerResourcesInstance6D1E66435e65ca2c2fe86904 --url https://cloudformation.",
+                " --resource ServerResourcesInstance6D1E66434078be39a1188ed5 --url https://cloudformation.",
                 {
                   "Ref": "AWS::Region",
                 },
@@ -1778,7 +1778,7 @@ echo Launch time: 10/30/2023, 5:47:46 PM
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "e2277687077a2abf9ae1af1cc9565e6715e2ebb62f79ec53aa75a1af9298f642.zip",
+          "S3Key": "3fb6287214999ddeafa7cd0e3e58bc5144c8678bb720f3b5e45e8fd32f333eb3.zip",
         },
         "Description": "/opt/awscli/aws",
       },
@@ -2011,7 +2011,7 @@ echo Launch time: 10/30/2023, 5:47:46 PM
         "Targets": [
           {
             "Id": {
-              "Ref": "ServerResourcesInstance6D1E66435e65ca2c2fe86904",
+              "Ref": "ServerResourcesInstance6D1E66434078be39a1188ed5",
             },
           },
         ],
