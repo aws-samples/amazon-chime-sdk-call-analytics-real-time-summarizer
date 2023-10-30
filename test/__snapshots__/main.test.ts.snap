@@ -656,7 +656,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "25b44bc8634caa3e8efdc9328daa21b23a5e27e350ba48524a2186d73c8d68dd.zip",
+          "S3Key": "4badcf1788378b1df1e1feb116b1cf04e381ceb2f5ac9ce82e16936c07880898.zip",
         },
         "Environment": {
           "Variables": {
@@ -1141,12 +1141,12 @@ exports[`Snapshot 1`] = `
           ],
         },
         "InstanceId": {
-          "Ref": "ServerResourcesInstance6D1E66432d1a4639f00a5011",
+          "Ref": "ServerResourcesInstance6D1E664303bd973613bc4921",
         },
       },
       "Type": "AWS::EC2::EIPAssociation",
     },
-    "ServerResourcesInstance6D1E66432d1a4639f00a5011": {
+    "ServerResourcesInstance6D1E664303bd973613bc4921": {
       "CreationPolicy": {
         "ResourceSignal": {
           "Count": 1,
@@ -1666,7 +1666,7 @@ aws s3 cp s3://",
                 },
                 "/site /home/ubuntu/site --recursive
 usermod -a -G www-data ubuntu
-echo Launch time: 10/24/2023, 4:42:59 PM
+echo Launch time: 10/30/2023, 5:05:59 AM
 # fingerprint: d5a8e1b0b110e99b
 (
   set +e
@@ -1678,7 +1678,7 @@ echo Launch time: 10/24/2023, 4:42:59 PM
                 {
                   "Ref": "AWS::StackName",
                 },
-                " --resource ServerResourcesInstance6D1E66432d1a4639f00a5011 --url https://cloudformation.",
+                " --resource ServerResourcesInstance6D1E664303bd973613bc4921 --url https://cloudformation.",
                 {
                   "Ref": "AWS::Region",
                 },
@@ -1699,7 +1699,7 @@ echo Launch time: 10/24/2023, 4:42:59 PM
                 {
                   "Ref": "AWS::StackName",
                 },
-                " --resource ServerResourcesInstance6D1E66432d1a4639f00a5011 --url https://cloudformation.",
+                " --resource ServerResourcesInstance6D1E664303bd973613bc4921 --url https://cloudformation.",
                 {
                   "Ref": "AWS::Region",
                 },
@@ -1804,7 +1804,7 @@ echo Launch time: 10/24/2023, 4:42:59 PM
           },
         ],
         "SourceObjectKeys": [
-          "4c44e1d0e94518d052e35e498341663b4595a3e0305a3b909769351bf8f9be45.zip",
+          "8532278ba76eb8680e596aa05815a860b04e276b19210eb2daeda657d300cec3.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
@@ -2011,7 +2011,7 @@ echo Launch time: 10/24/2023, 4:42:59 PM
         "Targets": [
           {
             "Id": {
-              "Ref": "ServerResourcesInstance6D1E66432d1a4639f00a5011",
+              "Ref": "ServerResourcesInstance6D1E664303bd973613bc4921",
             },
           },
         ],
