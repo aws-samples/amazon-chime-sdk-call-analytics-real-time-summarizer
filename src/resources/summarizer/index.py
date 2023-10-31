@@ -33,11 +33,7 @@ deserializer = TypeDeserializer()
 
 
 def create_prompt(conversation):
-    return f'\n\n \
-    Human: This is a conversation between two people, a caller and an agent.\n\n \
-    {conversation}\n\n \
-    {SUMMARY_QUESTION}\n\n \
-    Assistant:'
+    return f'\n\nHuman: This is a conversation between two people, a caller and an agent.\n\n{conversation}\n\n{SUMMARY_QUESTION}\n\nAssistant:'
 
 
 def get_response(prompt):
