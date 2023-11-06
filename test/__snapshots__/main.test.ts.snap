@@ -1141,12 +1141,12 @@ exports[`Snapshot 1`] = `
           ],
         },
         "InstanceId": {
-          "Ref": "ServerResourcesInstance6D1E66437ddb39166f36efdb",
+          "Ref": "ServerResourcesInstance6D1E6643d6577594bc51dd27",
         },
       },
       "Type": "AWS::EC2::EIPAssociation",
     },
-    "ServerResourcesInstance6D1E66437ddb39166f36efdb": {
+    "ServerResourcesInstance6D1E6643d6577594bc51dd27": {
       "CreationPolicy": {
         "ResourceSignal": {
           "Count": 1,
@@ -1666,7 +1666,7 @@ aws s3 cp s3://",
                 },
                 "/site /home/ubuntu/site --recursive
 usermod -a -G www-data ubuntu
-echo Launch time: 11/6/2023, 1:19:22 AM
+echo Launch time: 11/6/2023, 1:22:02 AM
 # fingerprint: d5a8e1b0b110e99b
 (
   set +e
@@ -1678,7 +1678,7 @@ echo Launch time: 11/6/2023, 1:19:22 AM
                 {
                   "Ref": "AWS::StackName",
                 },
-                " --resource ServerResourcesInstance6D1E66437ddb39166f36efdb --url https://cloudformation.",
+                " --resource ServerResourcesInstance6D1E6643d6577594bc51dd27 --url https://cloudformation.",
                 {
                   "Ref": "AWS::Region",
                 },
@@ -1699,7 +1699,7 @@ echo Launch time: 11/6/2023, 1:19:22 AM
                 {
                   "Ref": "AWS::StackName",
                 },
-                " --resource ServerResourcesInstance6D1E66437ddb39166f36efdb --url https://cloudformation.",
+                " --resource ServerResourcesInstance6D1E6643d6577594bc51dd27 --url https://cloudformation.",
                 {
                   "Ref": "AWS::Region",
                 },
@@ -2011,7 +2011,7 @@ echo Launch time: 11/6/2023, 1:19:22 AM
         "Targets": [
           {
             "Id": {
-              "Ref": "ServerResourcesInstance6D1E66437ddb39166f36efdb",
+              "Ref": "ServerResourcesInstance6D1E6643d6577594bc51dd27",
             },
           },
         ],
