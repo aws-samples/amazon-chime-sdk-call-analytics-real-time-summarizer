@@ -11,6 +11,7 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   license: 'MIT-0',
   projenrcTs: true,
   author: 'Court Schuett',
+  jest: false,
   copyrightOwner: 'Amazon.com, Inc.',
   authorAddress: 'https://aws.amazon.com',
   appEntrypoint: 'amazon-chime-sdk-call-analytics-real-time-summarizer.ts',
