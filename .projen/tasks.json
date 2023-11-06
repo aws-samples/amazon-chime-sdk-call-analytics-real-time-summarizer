@@ -193,20 +193,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --updateSnapshot",
-          "receiveArgs": true
-        },
-        {
           "spawn": "eslint"
-        }
-      ]
-    },
-    "test:watch": {
-      "name": "test:watch",
-      "description": "Run jest in watch mode",
-      "steps": [
-        {
-          "exec": "jest --watch"
         }
       ]
     },
@@ -221,13 +208,13 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,aws-cdk,esbuild,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,projen,ts-jest,ts-node,typescript,@aws-cdk/aws-apigatewayv2-alpha,@aws-cdk/aws-apigatewayv2-integrations-alpha,@aws-sdk/client-apigatewaymanagementapi,@aws-sdk/client-dynamodb,@aws-sdk/client-sagemaker,@aws-sdk/util-dynamodb,@types/aws-lambda,aws-cdk-lib,aws-lambda,cdk-amazon-chime-resources,constructs,dotenv"
+          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,aws-cdk,esbuild,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,npm-check-updates,projen,ts-node,typescript,@aws-cdk/aws-apigatewayv2-alpha,@aws-cdk/aws-apigatewayv2-integrations-alpha,@aws-sdk/client-apigatewaymanagementapi,@aws-sdk/client-dynamodb,@aws-sdk/client-sagemaker,@aws-sdk/util-dynamodb,@types/aws-lambda,aws-cdk-lib,aws-lambda,cdk-amazon-chime-resources,constructs,dotenv"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk esbuild eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates projen ts-jest ts-node typescript @aws-cdk/aws-apigatewayv2-alpha @aws-cdk/aws-apigatewayv2-integrations-alpha @aws-sdk/client-apigatewaymanagementapi @aws-sdk/client-dynamodb @aws-sdk/client-sagemaker @aws-sdk/util-dynamodb @types/aws-lambda aws-cdk-lib aws-lambda cdk-amazon-chime-resources constructs dotenv"
+          "exec": "yarn upgrade @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk esbuild eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint npm-check-updates projen ts-node typescript @aws-cdk/aws-apigatewayv2-alpha @aws-cdk/aws-apigatewayv2-integrations-alpha @aws-sdk/client-apigatewaymanagementapi @aws-sdk/client-dynamodb @aws-sdk/client-sagemaker @aws-sdk/util-dynamodb @types/aws-lambda aws-cdk-lib aws-lambda cdk-amazon-chime-resources constructs dotenv"
         },
         {
           "exec": "npx projen"
