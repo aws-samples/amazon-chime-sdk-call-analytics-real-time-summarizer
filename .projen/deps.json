@@ -2,7 +2,7 @@
   "dependencies": [
     {
       "name": "@types/node",
-      "version": "^16",
+      "version": "^18",
       "type": "build"
     },
     {
@@ -22,10 +22,6 @@
     },
     {
       "name": "esbuild",
-      "type": "build"
-    },
-    {
-      "name": "eslint-import-resolver-node",
       "type": "build"
     },
     {

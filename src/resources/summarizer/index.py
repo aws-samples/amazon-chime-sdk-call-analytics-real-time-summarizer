@@ -27,7 +27,8 @@ MODEL_ID = 'anthropic.claude-instant-v1'
 
 dynamodb = boto3.client('dynamodb', region_name='us-east-1')
 kinesis = boto3.client('kinesis')
-api_gateway = boto3.client("apigatewaymanagementapi", endpoint_url=API_GATEWAY_ENDPOINT)
+api_gateway = boto3.client("apigatewaymanagementapi",
+                           endpoint_url=API_GATEWAY_ENDPOINT)
 bedrock_runtime = boto3.client('bedrock-runtime')
 deserializer = TypeDeserializer()
 
@@ -72,7 +73,8 @@ def write_to_websocket(bedrock_response):
     }
     payload_json = json.dumps(payload)
     connections = dynamodb.scan(TableName=CONNECTION_TABLE)
-    connection_ids = [item["connectionId"]["S"] for item in connections["Items"]]
+    connection_ids = [item["connectionId"]["S"]
+                      for item in connections["Items"]]
 
     try:
         for connection_id in connection_ids:
@@ -103,7 +105,7 @@ def handler(event, context):
 
         params = {
             'TableName': TRANSCRIBE_TABLE,
-            'FilterExpression': '#tid = :tid',
+            'KeyConditionExpression': '#tid = :tid',
             'ExpressionAttributeNames': {
                 '#tid': 'transactionId',
             },
@@ -113,9 +115,9 @@ def handler(event, context):
         }
 
         try:
-            response = dynamodb.scan(**params)
+            response = dynamodb.query(**params)
         except ClientError as error:
-            logger.error('%s DynamoDB scan failed: %s ', LOG_PREFIX, error)
+            logger.error('%s DynamoDB query failed: %s ', LOG_PREFIX, error)
             raise error
 
         items = [
